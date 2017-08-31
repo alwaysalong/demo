@@ -1,6 +1,15 @@
 package com.sh.demo.pojo;
 
-
+/* sql
+ * CREATE TABLE `userinfo` (
+ *		  `id` bigint(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '用户ID',
+ *		  `username` varchar(16) NOT NULL COMMENT '用户名',
+ *		  `password` varchar(200) NOT NULL COMMENT '密码',
+ *		  `status` tinyint(4) DEFAULT '0' COMMENT '用户状态',
+ *		  PRIMARY KEY (`id`)
+ *		) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='用户表';
+ *
+ */
 public class UserInfo {
 
 	
