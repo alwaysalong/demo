@@ -15,7 +15,7 @@
 <body>
 	<h2 align="center">欢迎你!</h2>
 	<center>
-		<form action="http://localhost:8080/register/addUser" method="post">
+		<form action="${pageContext.request.contextPath}/register/addUser" method="post">
 			<tr>
 				<td>登录名：</td>
 				<td><input name="userName"></td>

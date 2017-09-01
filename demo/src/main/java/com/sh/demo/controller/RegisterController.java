@@ -23,12 +23,10 @@ public class RegisterController {
 	private IUserInfoService userInfoService;
 
 	@RequestMapping("/addUser")
-	@ResponseBody
-	public Map<String, Object> addUser(HttpServletRequest request,Model model){
-		Map<String, Object> map = new HashMap<String, Object>();
+	public void addUser(HttpServletRequest request){
 		String userName = request.getParameter("userName");
 		String passWord = request.getParameter("passWord");
-		Map<String, Object> result = userInfoService.addUser(userName, passWord);
-		return result;
+		Map<String, Object> result = new HashMap<String, Object>();
+		result = userInfoService.addUser(userName, passWord);
 	}
 }
