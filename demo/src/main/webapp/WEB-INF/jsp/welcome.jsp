@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>欢迎页面</title>
 <script type="text/javascript">
 	$("#select").submit();
 </script>
@@ -13,7 +13,7 @@
 <body>
 
 
-	<form id="select" action="/user/queryUserById" method="post">
+	<%-- <form id="select" action="/user/queryUserById" method="post">
 		id: <input type="text" name="id" id="id" value="" /> <br> <input
 			type="submit" onclick="select()" value="查询" />
 
@@ -28,7 +28,8 @@
 	<br />
 	<br /> 年龄 : ${requestScope.user.age}
 	<br />
-
+ --%>
+ <center><font color="blue">欢迎您: ${sessionScope.userName}</center>
 
 </body>
 </html>
