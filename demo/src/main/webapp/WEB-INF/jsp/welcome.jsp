@@ -6,7 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>欢迎页面</title>
 <script type="text/javascript">
-	$("#select").submit();
 </script>
 
 </head>
