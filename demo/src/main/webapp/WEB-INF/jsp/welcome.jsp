@@ -30,6 +30,8 @@
 	<br />
  --%>
  <center><font color="blue">欢迎您: ${sessionScope.userName}</center>
+ <br>
+ <center><a href="${pageContext.request.contextPath}/login/logout">[退出]</a></center>
 
 </body>
 </html>
