@@ -47,11 +47,11 @@ public class LoginController {
 		if (result.get("code").equals(ConstantsClass.PARAMETER_ERROR)) {
 //			resultMap.put("msg", "账号或密码错误,请重新登录!");
 //			return resultMap;
-			request.setAttribute("error", "用户名或密码不能为空!");
-			return null;
+			request.getSession().setAttribute("error", "用户名或密码不能为空!");
+			return "redirect:/login.jsp";
 		}else if (result.get("code").equals(ConstantsClass.REQUEST_FAIL)) {
-			request.setAttribute("error", "用户名或密码不正确,请重新登录!");
-			return null;
+			request.getSession().setAttribute("error", "用户名或密码错误!");
+			return "redirect:/login.jsp";
 		}else {
 			request.getSession().setAttribute("userId", result.get("id"));
 			request.getSession().setAttribute("userName", userName);

@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>欢迎页面</title>
 <script type="text/javascript">
+	
 </script>
 
 </head>
@@ -28,9 +31,13 @@
 	<br /> 年龄 : ${requestScope.user.age}
 	<br />
  --%>
- <center><font color="blue">欢迎您: ${sessionScope.userName}</center>
- <br>
- <center><a href="${pageContext.request.contextPath}/login/logout">[退出]</a></center>
+	<center>
+		<font color="blue">欢迎您: ${sessionScope.userName}
+	</center>
+	<br>
+	<center>
+		<a href="${pageContext.request.contextPath}/login/logout">[退出]</a>
+	</center>
 
 </body>
 </html>

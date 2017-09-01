@@ -4,10 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.sh.demo.commons.ConstantsClass;
 import com.sh.demo.dao.UserInfoDao;
 import com.sh.demo.pojo.UserInfo;
 import com.sh.demo.service.IUserInfoService;
@@ -16,6 +19,7 @@ import com.sh.demo.service.IUserInfoService;
 @Transactional
 public class UserInfoServiceImpl implements IUserInfoService {
 
+	private static Log log = LogFactory.getLog(UserInfoServiceImpl.class);
 	@Autowired
 	private UserInfoDao userInfoDao;
 	private Map<String, Object> map = new HashMap<String, Object>();
@@ -38,19 +42,30 @@ public class UserInfoServiceImpl implements IUserInfoService {
 	public Map<String, Object> addUser(String userName, String passWord) {
 		if (null == userName || "".equals(userName) || null == passWord
 				|| "".equals(passWord)) {
+			log.error("注册用户名或密码不能为空!");
+			map.put("code", ConstantsClass.PARAMETER_ERROR);
 			map.put("msg", "参数不能为空!");
 			return map;
 		}
-		Long userId = userInfoDao.queryByName(userName);
-		if (userId != null) {
-			map.put("msg", "用户名已存在,请重新输入!!!");
+		try {
+			Long userId = userInfoDao.queryByName(userName);
+			if (userId != null) {
+				log.error("该用户名已存在!");
+				map.put("code", ConstantsClass.REQUEST_FAIL);
+				map.put("msg", "用户名已存在,请重新输入!!!");
+				return map;
+			}
+			String pwd = DigestUtils.md5Hex(passWord);
+			Long row = userInfoDao.addUser(userName, pwd);
+			map.put("code", ConstantsClass.REQUEST_SUCCESS);
+			map.put("msg", "注册成功!");
+			map.put("用户名", userName);
 			return map;
+		} catch (Exception e) {
+			log.info("UserInfoServiceImpl.addUser   exception :" + e);
+			log.info(e.getMessage(),e);
+			throw new RuntimeException();
 		}
-		String pwd = DigestUtils.md5Hex(passWord);
-		Long row = userInfoDao.addUser(userName, pwd);
-		map.put("msg", "注册成功!");
-		map.put("用户名", userName);
-		return map;
 	}
 
 	public Map<String, Object> deleUser(String userName, String passWord) {

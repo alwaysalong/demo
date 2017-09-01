@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,20 +15,21 @@
 
 </head>
 <body>
-	<h2 align="center">欢迎你!</h2>
+	<h1 align="center">欢迎你!</h2>
 	<center>
-		<form action="${pageContext.request.contextPath}/register/addUser" method="post">
+		<form action="${pageContext.request.contextPath}/register/addUser"
+			method="post">
 			<tr>
 				<td>登录名：</td>
 				<td><input name="userName"></td>
 			</tr>
-			<br>
-			<br>
+			<br> <br>
 			<tr>
 				<td>密码：</td>
 				<td><input name="passWord" type="password"></td>
 			</tr>
-			<br>
+			<br> 
+			<font color="red">${sessionScope.error}</font>
 			<br>
 			<tr align="center">
 				<td colspan="2"><input type="submit" value="提交注册"></td>

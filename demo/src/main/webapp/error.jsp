@@ -11,6 +11,8 @@
 <body>
 	<center>
 	<font color="red"> 出错啦...</font>
+	<br>
+	点击<a href="${pageContext.request.contextPath}/login.jsp"><font color="blue">[这里]</font></a>返回登录页面...
 	</center>
 </body>
 </html>

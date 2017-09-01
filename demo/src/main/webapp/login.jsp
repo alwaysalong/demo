@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,7 +14,10 @@
 <body>
 	<center>
 		<h1 style="color: red">登录</h1>
-		<form id="indexform" name="indexForm" action="${pageContext.request.contextPath}/login/loginIn"
+		<font color="red">${sessionScope.error }</font>
+		
+		<form id="indexform" name="indexForm"
+			action="${pageContext.request.contextPath}/login/loginIn"
 			method="post">
 			<table border="0">
 				<tr>
@@ -29,7 +34,7 @@
 		<form action="register.jsp">
 			<input type="submit" value="注册" style="color: #BC8F8F">
 		</form>
-	</center>
+		</center>
 
 </body>
 </html>
