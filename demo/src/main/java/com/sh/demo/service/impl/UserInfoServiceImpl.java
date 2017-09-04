@@ -48,7 +48,7 @@ public class UserInfoServiceImpl implements IUserInfoService {
 			return map;
 		}
 		try {
-			Long userId = userInfoDao.queryByName(userName);
+			UserInfo userId = userInfoDao.queryByName(userName);
 			if (userId != null) {
 				log.error("该用户名已存在!");
 				map.put("code", ConstantsClass.REQUEST_FAIL);

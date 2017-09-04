@@ -14,7 +14,7 @@ public interface UserInfoDao {
 	/**
 	 * 查询用户是否存在
 	 */
-	public  Long queryByName(@Param("userName") String userName);
+	public  UserInfo queryByName(@Param("userName") String userName);
 	
 	
 	/**

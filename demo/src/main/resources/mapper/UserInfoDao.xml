@@ -18,9 +18,9 @@
 		username = #{userName} and password = #{passWord} and status = 0
 	</select>
 	
-	<select id="queryByName" resultMap="userInfoMap">
+	<select id="queryByName"  resultType="UserInfo"  resultMap="userInfoMap">
 
-		SELECT id
+		SELECT *
 		FROM userinfo WHERE
 		username = #{userName} and status = 0
 	</select>

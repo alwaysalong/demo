@@ -44,9 +44,11 @@ public class RegisterController {
 		}else if (result.get("code").equals(ConstantsClass.REQUEST_FAIL)) {
 			request.getSession().setAttribute("error", "用户名已存在!");
 			return "redirect:/register.jsp";
-		}else {
-			request.getSession().setAttribute("success", "注册成功,请点击这里进行登录!");
 		}
+			
+		
+		request.getSession().setAttribute("success", "注册成功,请点击这里进行登录!");
+		
 		return null;
 	}
 }
