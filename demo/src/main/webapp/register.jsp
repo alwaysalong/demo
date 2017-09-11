@@ -34,9 +34,9 @@
 				<tr align="center">
 					<td colspan="2"><input type="submit" value="提交注册"></td>
 				</tr>
-		<br> <font color="blue">${sessionScope.success}</font> <br>
+				<%-- 		<br> <font color="blue">${sessionScope.success}</font> <br>--%>
 			</form>
-			
+
 
 		</center>
 </body>
