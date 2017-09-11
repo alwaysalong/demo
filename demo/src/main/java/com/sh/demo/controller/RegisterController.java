@@ -1,12 +1,9 @@
 package com.sh.demo.controller;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -30,8 +27,7 @@ public class RegisterController {
 	private IUserInfoService userInfoService;
 
 	@RequestMapping("/addUser")
-	public void addUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		response.setContentType("text/html;charset=utf-8");
+	public String addUser(HttpServletRequest request){
 		String userName = request.getParameter("userName");
 		String passWord = request.getParameter("passWord");
 		Map<String, Object> result = new HashMap<String, Object>();
@@ -40,24 +36,19 @@ public class RegisterController {
 		} catch (Exception e) {
 			log.info("RegisterController.addUser   exception" + e);
 			log.info(e.getMessage(),e);
-//			return "redirect:/error.jsp";
-			request.getRequestDispatcher("error.jsp").forward(request, response);
-			return;
+			return "redirect:/error.jsp";
 		}
 		if (result.get("code").equals(ConstantsClass.PARAMETER_ERROR)) {
 			request.getSession().setAttribute("error", "用户名或密码不能空!");
-//			return "redirect:/register.jsp";
-			request.getRequestDispatcher("register.jsp").forward(request, response);
-			return;
+			return "redirect:/register.jsp";
 		}else if (result.get("code").equals(ConstantsClass.REQUEST_FAIL)) {
 			request.getSession().setAttribute("error", "用户名已存在!");
-//			return "redirect:/register.jsp";
-			request.getRequestDispatcher("register.jsp").forward(request, response);
-			return;
+			return "redirect:/register.jsp";
 		}
-		request.getSession().setAttribute("success", "注册成功,请点击这里进行登录...");
-		request.getRequestDispatcher("/WEB-INF/jsp/reminder.jsp").forward(request, response);
-		return;
+			
 		
+		request.getSession().setAttribute("success", "注册成功,请点击这里进行登录!");
+		
+		return null;
 	}
 }
