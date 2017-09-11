@@ -15,29 +15,29 @@
 
 </head>
 <body>
-	<h1 align="center">欢迎你!</h2>
-	<center>
-		<form action="${pageContext.request.contextPath}/register/addUser"
-			method="post">
-			<tr>
-				<td>登录名：</td>
-				<td><input name="userName"></td>
-			</tr>
-			<br> <br>
-			<tr>
-				<td>密码：</td>
-				<td><input name="passWord" type="password"></td>
-			</tr>
-			<br> 
-			<font color="red">${sessionScope.error}</font>
-			<br>
-			<tr align="center">
-				<td colspan="2"><input type="submit" value="提交注册"></td>
-			</tr>
+	<h1 align="center">
+		欢迎你!
+		</h2>
+		<center>
+			<form action="${pageContext.request.contextPath}/register/addUser"
+				method="post">
+				<tr>
+					<td>登录名：</td>
+					<td><input name="userName"></td>
+				</tr>
+				<br> <br>
+				<tr>
+					<td>密码：</td>
+					<td><input name="passWord" type="password"></td>
+				</tr>
+				<br> <font color="red">${sessionScope.error}</font> <br>
+				<tr align="center">
+					<td colspan="2"><input type="submit" value="提交注册"></td>
+				</tr>
+				<%-- 		<br> <font color="blue">${sessionScope.success}</font> <br>--%>
+			</form>
 
-		</form>
 
-
-	</center>
+		</center>
 </body>
 </html>

@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
-  xmlns="http://java.sun.com/xml/ns/javaee"  
-  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"  
-  version="3.0">  
-  
-  <context-param> <!--全局范围内环境参数初始化-->  
-        <param-name>contextConfigLocation</param-name>          <!--参数名称-->  
-        <param-value>classpath:spring-mybatis.xml</param-value>     <!--参数取值-->  
-    </context-param>  
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+
+	<context-param> <!--全局范围内环境参数初始化 -->
+		<param-name>contextConfigLocation</param-name>          <!--参数名称 -->
+		<param-value>classpath:spring-mybatis.xml</param-value>     <!--参数取值 -->
+	</context-param>
+
+	<welcome-file-list>
+		<welcome-file>login.jsp</welcome-file>
+	</welcome-file-list>
+
 	<!-- 配置dispatcherServlet -->
 	<servlet>
 		<servlet-name>demo-dispatcher</servlet-name>
@@ -17,8 +22,8 @@
 			<param-name>contextConfigLocation</param-name>
 			<param-value>classpath:spring-*.xml</param-value>
 		</init-param>
-		<load-on-startup>1</load-on-startup><!--当值为正数或零时：Servlet容器先加载数值小的servlet，再依次加载其他数值大的servlet.-->  
-		
+		<load-on-startup>1</load-on-startup><!--当值为正数或零时：Servlet容器先加载数值小的servlet，再依次加载其他数值大的servlet. -->
+
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>demo-dispatcher</servlet-name>
@@ -26,5 +31,7 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
-
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
 </web-app>
