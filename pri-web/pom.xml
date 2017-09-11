@@ -1,0 +1,95 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">  
+    <modelVersion>4.0.0</modelVersion>  
+    <parent>  
+        <groupId>com.li</groupId>  
+        <artifactId>pri-parent</artifactId>  
+        <version>0.0.1-SNAPSHOT</version>  
+        <!-- 以当前文件为基准的父工程pom.xml文件的相对路径 -->  
+        <relativePath>../pom.xml</relativePath>  
+    </parent>  
+    <artifactId>pri-web</artifactId>  
+    <packaging>war</packaging>  
+  
+    <dependencies>  
+        <!-- 引用pri-base -->  
+        <dependency>  
+            <groupId>com.li</groupId>  
+            <artifactId>pri-base</artifactId>  
+            <version>0.0.1-SNAPSHOT</version>  
+        </dependency>  
+        <!-- 引入项目需要的jar包 -->  
+        <!-- SpringMVC Spring -->  
+        <dependency>  
+            <groupId>org.springframework</groupId>  
+            <artifactId>spring-webmvc</artifactId>  
+        </dependency>  
+        <!-- Spring-jdbc -->  
+        <dependency>  
+            <groupId>org.springframework</groupId>  
+            <artifactId>spring-jdbc</artifactId>  
+        </dependency>  
+        <!-- Spring面向切面编程 -->  
+        <dependency>  
+            <groupId>org.springframework</groupId>  
+            <artifactId>spring-aspects</artifactId>  
+        </dependency>  
+        <!-- Spring test -->  
+        <dependency>  
+            <groupId>org.springframework</groupId>  
+            <artifactId>spring-test</artifactId>  
+        </dependency>  
+  
+  
+        <!-- (jstl、servlet-api、junit) -->  
+        <dependency>  
+            <groupId>jstl</groupId>  
+            <artifactId>jstl</artifactId>  
+        </dependency>  
+        <dependency>  
+            <groupId>javax.servlet</groupId>  
+            <artifactId>javax.servlet-api</artifactId>  
+            <scope>provided</scope>  
+        </dependency>  
+        <!-- 返回json字符串的支持 -->  
+        <dependency>  
+            <groupId>com.fasterxml.jackson.core</groupId>  
+            <artifactId>jackson-databind</artifactId>  
+        </dependency>  
+  
+        <dependency>  
+            <groupId>junit</groupId>  
+            <artifactId>junit</artifactId>  
+        </dependency>  
+        <!-- 导入logback日志的jar -->  
+        <dependency>  
+            <groupId>ch.qos.logback</groupId>  
+            <artifactId>logback-classic</artifactId>  
+        </dependency>  
+        <dependency>  
+            <groupId>ch.qos.logback</groupId>  
+            <artifactId>logback-core</artifactId>  
+        </dependency>  
+  
+  
+    </dependencies>  
+  
+  
+  
+    <!-- 配置mavne打包的信息 -->  
+    <build>  
+    <plugins>  
+        <!-- define the project compile level -->  
+        <plugin>  
+            <groupId>org.apache.maven.plugins</groupId>  
+            <artifactId>maven-compiler-plugin</artifactId>  
+            <version>2.3.2</version>  
+            <configuration>  
+                <source>1.7</source>  
+                <target>1.7</target>  
+            </configuration>  
+        </plugin>  
+    </plugins>  
+</build>  
+  
+</project>  

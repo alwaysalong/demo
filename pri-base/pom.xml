@@ -1,0 +1,55 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>  
+    <parent>  
+        <groupId>com.li</groupId>  
+        <artifactId>pri-parent</artifactId>  
+        <version>0.0.1-SNAPSHOT</version>  
+        <!-- 以当前文件为基准的父工程pom.xml文件的相对路径 -->  
+        <relativePath>../pom.xml</relativePath>  
+    </parent>  
+    <artifactId>pri-base</artifactId>  
+  
+    <!-- 引入项目依赖的jar包 -->  
+    <dependencies>  
+        <!-- Mybatis -->  
+        <dependency>  
+            <groupId>org.mybatis</groupId>  
+            <artifactId>mybatis</artifactId>  
+        </dependency>  
+        <!-- Mybatis整合Spring的适配包 -->  
+        <dependency>  
+            <groupId>org.mybatis</groupId>  
+            <artifactId>mybatis-spring</artifactId>  
+        </dependency>  
+        <!-- 逆向工程需要的MBG -->  
+        <dependency>  
+            <groupId>org.mybatis.generator</groupId>  
+            <artifactId>mybatis-generator-core</artifactId>  
+        </dependency>  
+  
+        <!-- 数据库连接池、驱动 -->  
+        <dependency>  
+            <groupId>c3p0</groupId>  
+            <artifactId>c3p0</artifactId>  
+        </dependency>  
+        <!-- Oracle or MySQL驱动 -->  
+        <dependency>  
+            <groupId>mysql</groupId>  
+            <artifactId>mysql-connector-java</artifactId>  
+        </dependency>  
+        <!-- 引入pagehelper分页插件 -->  
+        <dependency>  
+            <groupId>com.github.pagehelper</groupId>  
+            <artifactId>pagehelper</artifactId>  
+        </dependency>  
+        <!-- JSR303数据校验支持 ；tomcat7及以上的服务器。如果是tomcat7以下的服务器：el表达式，额外给服务器的lib包中替换新的标准el -->  
+        <dependency>  
+            <groupId>org.hibernate</groupId>  
+            <artifactId>hibernate-validator</artifactId>  
+        </dependency>  
+  
+  
+    </dependencies>  
+  
+</project>  
