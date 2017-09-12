@@ -1,5 +1,8 @@
-package com.sh.pri.commons;
+package com.sh.pri.controller;
 import javax.imageio.ImageIO;  
+
+import org.springframework.web.bind.annotation.RequestMapping;
+
 import java.awt.*;  
 import java.awt.image.BufferedImage;  
 import java.io.FileOutputStream;  
@@ -13,6 +16,7 @@ import java.util.Random;
  * 
  * @author  
  */  
+@RequestMapping("validate")
 public class ValidateCode {  
     // 图片的宽度。  
     private int width = 160;  
@@ -63,6 +67,7 @@ public class ValidateCode {
         this.createCode();  
     }  
   
+    @RequestMapping("code")
     public void createCode() {  
         int x = 0, fontHeight = 0, codeY = 0;  
         int red = 0, green = 0, blue = 0;  
