@@ -5,6 +5,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script type="text/javascript"
+	src="js/jquery-1.8.3.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>登录</title>
 <style>
@@ -50,19 +52,13 @@
 			action="${pageContext.request.contextPath}/login/loginIn"
 			method="post">
 			<table border="0">
-							
-			
 			<div>
-				
 					<label for="username">账号：</label>
 					<input type="text" name="username" id="username">
-			
 			</div>
 			<div>
-			
 					<label for="password">密码：</label>
 					<input type="password" name="password" id="password">
-				
 			</div>
 					<div>
 					<label for="code">验证码：</label>
@@ -72,8 +68,6 @@
 							src="/article/validateCode" onclick="changeImg()" /> <a href="#"
 							onclick="changeImg()">换一张</a>
 					</div>
-
-
 			</table>
 			<br> <input type="submit" value="登录" style="color: #BC8F8F">
 		</form>

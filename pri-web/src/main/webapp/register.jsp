@@ -36,7 +36,7 @@ div {
 			<div>
 				<label>性别:</label>&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="sex" name="sex" checked="checked" value="1"/>男&nbsp;&nbsp;&nbsp;&nbsp;
 									<input type="radio" id="sex" name="sex" value="2"/>女&nbsp;&nbsp;&nbsp;&nbsp;
-				</input> 
+				 
 			</div>
 			<div id="error_msg">
 				 <font color="red">${sessionScope.error}</font> <br>
