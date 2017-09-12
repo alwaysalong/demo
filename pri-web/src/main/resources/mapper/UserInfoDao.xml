@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sh.pri.dao.UserInfoDao">
+
+	<resultMap type="com.sh.pri.pojo.UserInfo" id="userInfoMap">
+		<id column="id" property="id" />
+		<result column="username" property="userName" />
+		<result column="password" property="passWord" />
+		<result column="status" property="status" />
+	</resultMap>
+	<select id="queryUserInfo" resultType="UserInfo" resultMap="userInfoMap">
+
+		SELECT *
+		FROM userinfo WHERE
+		username = #{userName} and password = #{passWord} and status = 0
+	</select>
+	
+	<select id="queryByName"  resultType="UserInfo"  resultMap="userInfoMap">
+
+		SELECT *
+		FROM userinfo WHERE
+		username = #{userName} and status = 0
+	</select>
+
+	<insert id="addUser" parameterType="com.sh.pri.pojo.UserInfo" >
+		INSERT INTO userinfo (username,password) VALUES
+		(#{userName},#{passWord})
+	</insert>
+	<!-- <delete id="deleUser"> DELETE FROM userinfo WHERE id = #{id} </delete> -->
+	<!-- 删除用户,逻辑删除 -->
+	<update id="deleUser">
+		update userinfo set status = 1 where username =
+		#{userName} and password = #{passWord}
+	</update>
+	<!-- 修改密码 -->
+	<update id="updatePWD">
+		update userinfo set password = #{passWord} where username = #{userName}
+	</update>
+</mapper>
