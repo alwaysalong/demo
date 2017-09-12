@@ -18,7 +18,7 @@ public interface IUserInfoService {
 	/**
 	 * 新增用户
 	 */
-	public Map<String, Object> addUser(String userName,String passWord);
+	public Map<String, Object> addUser(String userName,String passWord,String sex );
 	
 	/**
 	 * 删除用户,逻辑删除

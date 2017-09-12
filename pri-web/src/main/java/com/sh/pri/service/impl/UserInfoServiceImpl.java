@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.omg.CORBA.PRIVATE_MEMBER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,7 +40,7 @@ public class UserInfoServiceImpl implements IUserInfoService {
 		return map;
 	}
 
-	public Map<String, Object> addUser(String userName, String passWord) {
+	public Map<String, Object> addUser(String userName, String passWord, String sex) {
 		if (null == userName || "".equals(userName) || null == passWord
 				|| "".equals(passWord)) {
 			log.error("注册用户名或密码不能为空!");
@@ -56,7 +57,7 @@ public class UserInfoServiceImpl implements IUserInfoService {
 				return map;
 			}
 			String pwd = DigestUtils.md5Hex(passWord);
-			Long row = userInfoDao.addUser(userName, pwd);
+			Long row = userInfoDao.addUser(userName, pwd, sex);
 			map.put("code", ConstantsClass.REQUEST_SUCCESS);
 			map.put("msg", "注册成功!");
 			map.put("用户名", userName);

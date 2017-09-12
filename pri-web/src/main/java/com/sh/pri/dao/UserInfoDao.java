@@ -20,7 +20,7 @@ public interface UserInfoDao {
 	/**
 	 * 新增用户
 	 */
-	public Long addUser(@Param("userName") String userName, @Param("passWord") String passWord);
+	public Long addUser(@Param("userName") String userName, @Param("passWord") String passWord, @Param("sex") String sex);
 	
 	
 	/**

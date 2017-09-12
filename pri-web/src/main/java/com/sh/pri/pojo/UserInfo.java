@@ -16,14 +16,10 @@ public class UserInfo {
 	private Long id;
 	private String userName;
 	private String passWord;
+	private String sex;
 	private Long status;
 	public Long getId() {
 		return id;
-	}
-	@Override
-	public String toString() {
-		return "UserInfo [id=" + id + ", userName=" + userName + ", passWord="
-				+ passWord + ", status=" + status + "]";
 	}
 	public void setId(Long id) {
 		this.id = id;
@@ -40,10 +36,24 @@ public class UserInfo {
 	public void setPassWord(String passWord) {
 		this.passWord = passWord;
 	}
+	public String getSex() {
+		return sex;
+	}
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
 	public Long getStatus() {
 		return status;
 	}
 	public void setStatus(Long status) {
 		this.status = status;
 	}
+	@Override
+	public String toString() {
+		return "UserInfo [id=" + id + ", userName=" + userName + ", passWord="
+				+ passWord + ", sex=" + sex + ", status=" + status + "]";
+	}
+	
+	
+	
 }

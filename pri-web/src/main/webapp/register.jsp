@@ -6,38 +6,67 @@
 <html>
 <head>
 <script type="text/javascript"
-	src="Public/js/jquery-easyui-1.3.1/jquery-1.8.2.min.js"></script>
+	src="js/jquery-1.8.3.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>注册</title>
-<script type="text/javascript">
-	
-</script>
+<style>
+label {
+	display: inline-block;
+	width: 100px;
+	text-align: right;
+}
+
+div {
+	padding: 5px 0;
+}
+</style>
 
 </head>
 <body>
-	<h1 align="center">
-		欢迎你!
-		</h2>
-		<center>
-			<form action="${pageContext.request.contextPath}/register/addUser"
-				method="post">
-				<tr>
-					<td>登录名：</td>
-					<td><input name="userName"></td>
-				</tr>
-				<br> <br>
-				<tr>
-					<td>密码：</td>
-					<td><input name="passWord" type="password"></td>
-				</tr>
-				<br> <font color="red">${sessionScope.error}</font> <br>
-				<tr align="center">
-					<td colspan="2"><input type="submit" value="提交注册"></td>
-				</tr>
-				<%-- 		<br> <font color="blue">${sessionScope.success}</font> <br>--%>
-			</form>
+	<h1 align="center">欢迎你!</h1>
+	<center>
+		<form action="${pageContext.request.contextPath}/register/addUser"
+			id="regForm" name="regForm" method="post">
+			<div>
+				<label>登录名：</label> <input type="text" name="userName" id="userName"/>
+			</div>
+			<div>
+				<label>密码：</label> <input name="passWord" type="password" id="passWord"/>
+			</div>
+			<div>
+				<label>性别:</label>&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="sex" name="sex" checked="checked" value="1"/>男&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" id="sex" name="sex" value="2"/>女&nbsp;&nbsp;&nbsp;&nbsp;
+				</input> 
+			</div>
+			<div id="error_msg">
+				 <font color="red">${sessionScope.error}</font> <br>
+			</div>
+			<div align="center">
+				<!-- <input type="submit" value="提交注册"> -->
+				<input type="button" value="提交注册" class="btn Borange mb20" onclick="doSubmit()"/>
+			</div>
+			<%-- 		<br> <font color="blue">${sessionScope.success}</font> <br>--%>
+		</form>
 
-
-		</center>
+	</center>
+	
+	
+<script type="text/javascript">
+	function doSubmit(){
+		/* var sex = $("input[name='sex']:checked").val(); */
+		var sex = $("#sex").val();
+		var username = $("#userName").val().replace(/(^\s*)|(\s*$)/g, '');//去除空格
+		var password = $("#passWord").val().replace(/(^\s*)|(\s*$)/g, '');
+		if(username == '' || username == undefined || username == null){
+			alert("登录名不能为空!");
+			return false;
+		}
+		if(password == '' || password == undefined || password == null){
+			alert("密码不能为空!");
+			return false;
+		}
+		$("#regForm").submit();
+	}
+</script>
 </body>
 </html>
