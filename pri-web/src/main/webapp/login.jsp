@@ -158,17 +158,17 @@ div {
 			<table border="0">
 				<div>
 					<label for="username">账号：</label> <input type="text" placeholder="请输入账号"
-						name="username" id="username" onblur="aa()"><div id="hint" style="display:inline;"><font color="red" size="1px">账号不能为空</font></div>
+						name="username" id="username" onblur="aa()"><div id="hint" style="display:inline;"><font color="red" size="1px">*账号不能为空</font></div>
 				</div>
 				<div>
 					<label for="password">密码：</label> <input type="password" placeholder="请输入密码"
-						name="password" id="password" onblur="aa1()"><div id="hint1" style="display:inline;"><font color="red" size="1px">密码不能为空</font></div>
+						name="password" id="password" onblur="aa1()"><div id="hint1" style="display:inline;"><font color="red" size="1px">*密码不能为空</font></div>
 				</div>
 				<div>
 					<input type="button" id="code" onclick="createCode()" /> <a href="javascript:void(0)" onclick="createCode()"><font color="blue" size="2px">换一张</font></a>
 					<br>
 					<label>验证码:</label>
-					<input type="text" id="input" placeholder="请输入验证码" onblur="aa2()"/><div id="hint2" style="display:inline;"><font color="red" size="1px">验证码不正确</font></div> 
+					<input type="text" id="input" placeholder="请输入验证码" onblur="aa2()"/><div id="hint2" style="display:inline;"><font color="red" size="1px">*验证码不正确</font></div> 
 					<!-- <input type="button" value="验证" onclick="validate()" /> -->
 				</div>
 			</table>
@@ -177,7 +177,7 @@ div {
 			</div> -->
 			<br> <input type="submit" value="登录" id="button1" class="btn Borange mb20" disabled="true"/>
 		</form>
-		<a href="${pageContext.request.contextPath}/"><font color="blue" size="2px">忘记密码</font></a>
+		<a href="resetPWD.jsp"><font color="blue" size="2px">忘记密码</font></a>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<a href="register.jsp"><font color="blue" size="2px">注册账号</font></a>
 	</center>

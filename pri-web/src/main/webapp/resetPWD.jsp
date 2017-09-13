@@ -23,7 +23,7 @@ div {
 
 </head>
 <body>
-	<h1 align="center">欢迎你!</h1>
+	<%-- <h1 align="center">欢迎你!</h1>
 	<center>
 		<form action="${pageContext.request.contextPath}/register/addUser"
 			id="regForm" name="regForm" method="post">
@@ -48,15 +48,15 @@ div {
 				<!-- <input type="submit" value="提交注册"> -->
 				<input type="button" value="提交注册" class="btn Borange mb20" onclick="doSubmit()"/>
 			</div>
-			<%-- 		<br> <font color="blue">${sessionScope.success}</font> <br>--%>
+					<br> <font color="blue">${sessionScope.success}</font> <br>
 		</form>
 
-	</center>
-	
+	</center> --%>
+	<font color="red" size="10px">暂未完善...</font>
 	
 <script type="text/javascript">
-	function doSubmit(){
-		/* var sex = $("input[name='sex']:checked").val(); */
+	/* function doSubmit(){
+		 var sex = $("input[name='sex']:checked").val(); 
 		var sex = $("#sex").val();
 		var username = $("#userName").val().replace(/(^\s*)|(\s*$)/g, '');//去除空格
 		var password = $("#passWord").val().replace(/(^\s*)|(\s*$)/g, '');
@@ -74,7 +74,7 @@ div {
 			return false;
 		}
 		$("#regForm").submit();
-	}
+	} */
 </script>
 </body>
 </html>
