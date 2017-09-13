@@ -26,13 +26,13 @@ public class LoginServiceImpl implements ILoginService {
 	
 	public Map<String, Object> loginIn(String userName, String passWord) {
 		
-		if (null == userName || "".equals(userName) || null == passWord
+		/*if (null == userName || "".equals(userName) || null == passWord
 				|| "".equals(passWord)) {
 			log.error("用户名或密码不能为空!");
 			map.put("code", ConstantsClass.PARAMETER_ERROR);
 			map.put("msg", "参数不能为空!");
 			return map;
-		}
+		}*/
 		try {
 			String pwd = DigestUtils.md5Hex(passWord);
 			UserInfo result = userInfoDao.queryUserInfo(userName, pwd);

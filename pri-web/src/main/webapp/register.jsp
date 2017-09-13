@@ -28,10 +28,13 @@ div {
 		<form action="${pageContext.request.contextPath}/register/addUser"
 			id="regForm" name="regForm" method="post">
 			<div>
-				<label>登录名：</label> <input type="text" name="userName" id="userName"/>
+				<label>登录名：</label> <input type="text" name="userName" id="userName" placeholder="请输入账号"/>
 			</div>
 			<div>
-				<label>密码：</label> <input name="passWord" type="password" id="passWord"/>
+				<label>密码：</label> <input name="passWord" type="password" id="passWord" placeholder="请输入密码"/>
+			</div>
+			<div>
+				<label>密码：</label> <input name="passWord" type="password" id="passWord1" placeholder="请再输入一次密码"/>
 			</div>
 			<div>
 				<label>性别:</label>&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="sex" name="sex" checked="checked" value="1"/>男&nbsp;&nbsp;&nbsp;&nbsp;
@@ -57,12 +60,17 @@ div {
 		var sex = $("#sex").val();
 		var username = $("#userName").val().replace(/(^\s*)|(\s*$)/g, '');//去除空格
 		var password = $("#passWord").val().replace(/(^\s*)|(\s*$)/g, '');
+		var password1 = $("#passWord1").val().replace(/(^\s*)|(\s*$)/g, '');
 		if(username == '' || username == undefined || username == null){
 			alert("登录名不能为空!");
 			return false;
 		}
 		if(password == '' || password == undefined || password == null){
 			alert("密码不能为空!");
+			return false;
+		}
+		if(password != password1){
+			alert("两次输入的密码不一致!");
 			return false;
 		}
 		$("#regForm").submit();

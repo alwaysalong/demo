@@ -6,7 +6,7 @@
 		<artifactId>pri-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 		<!-- 以当前文件为基准的父工程pom.xml文件的相对路径 -->
-		<relativePath>../pom.xml</relativePath>
+		<relativePath>../pri-parent/pom.xml</relativePath>
 	</parent>
 	<artifactId>pri-base</artifactId>
 
