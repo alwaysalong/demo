@@ -8,6 +8,7 @@
 <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>登录</title>
+
 <style>
 label {
 	display: inline-block;
@@ -28,6 +29,22 @@ div {
 	letter-spacing: 2px;
 	color: blue;
 }
+/* //调整div在页面中的位置,第一个参数是水平,第二个是垂直 */
+ .center-in-center{
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     -webkit-transform: translate(-50%, -75%);
+     -moz-transform: translate(-50%, -75%);
+     -ms-transform: translate(-50%, -75%);
+     -o-transform: translate(-50%, -75%);
+     transform: translate(-50%, -75%);
+}
+ .login-page {
+      width: 360px;
+      padding: 8% 0 0;
+      margin: auto;
+    }
 /* 登录样式 */
 #button1 {
     width: 100px;
@@ -148,39 +165,52 @@ div {
 </head>
 <body>
 	<center>
+		<div>
+			<!-- <h1 style="color: red">登录</h1> -->
+			<div class="login-page">
+				<h3>欢迎您</h3>
+				<font color="red">${sessionScope.error }</font>
 
-		<h1 style="color: red">登录</h1>
-		<font color="red">${sessionScope.error }</font>
-
-		<form id="indexform" name="indexForm"
-			action="${pageContext.request.contextPath}/login/loginIn"
-			method="post">
-			<table border="0">
-				<div>
-					<label for="username">账号：</label> <input type="text" placeholder="请输入账号"
-						name="username" id="username" onblur="aa()"><div id="hint" style="display:inline;"><font color="red" size="1px">*账号不能为空</font></div>
-				</div>
-				<div>
-					<label for="password">密码：</label> <input type="password" placeholder="请输入密码"
-						name="password" id="password" onblur="aa1()"><div id="hint1" style="display:inline;"><font color="red" size="1px">*密码不能为空</font></div>
-				</div>
-				<div>
-					<input type="button" id="code" onclick="createCode()" /> <a href="javascript:void(0)" onclick="createCode()"><font color="blue" size="2px">换一张</font></a>
-					<br>
-					<label>验证码:</label>
-					<input type="text" id="input" placeholder="请输入验证码" onblur="aa2()"/><div id="hint2" style="display:inline;"><font color="red" size="1px">*验证码不正确</font></div> 
-					<!-- <input type="button" value="验证" onclick="validate()" /> -->
-				</div>
-			</table>
-			<!-- <div align="center">
+			</div>
+			<form id="indexform" name="indexForm"
+				action="${pageContext.request.contextPath}/login/loginIn"
+				method="post">
+				<table border="0">
+					<div>
+						<label for="username">账号：</label> <input type="text"
+							placeholder="请输入账号" name="username" id="username" onblur="aa()">
+						<div id="hint" style="display: inline;">
+							<font color="red" size="1px">*账号不能为空</font>
+						</div>
+					</div>
+					<div>
+						<label for="password">密码：</label> <input type="password"
+							placeholder="请输入密码" name="password" id="password" onblur="aa1()">
+						<div id="hint1" style="display: inline;">
+							<font color="red" size="1px">*密码不能为空</font>
+						</div>
+					</div>
+					<div>
+						<input type="button" id="code" onclick="createCode()" /> <a
+							href="javascript:void(0)" onclick="createCode()"><font
+							color="blue" size="2px">换一张</font></a> <br> <label>验证码:</label>
+						<input type="text" id="input" placeholder="请输入验证码" onblur="aa2()" />
+						<div id="hint2" style="display: inline;">
+							<font color="red" size="1px">*验证码不正确</font>
+						</div>
+						<!-- <input type="button" value="验证" onclick="validate()" /> -->
+					</div>
+				</table>
+				<!-- <div align="center">
 				<input type="button" id="button1" value="登录" class="btn Borange mb20" onclick="doSubmit()"/>
 			</div> -->
-			<br> <input type="submit" value="登录" id="button1" class="btn Borange mb20" disabled="true"/>
-		</form>
-		<a href="resetPWD.jsp"><font color="blue" size="2px">忘记密码</font></a>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<a href="register.jsp"><font color="blue" size="2px">注册账号</font></a>
+				<br> <input type="submit" value="登录" id="button1"
+					class="btn Borange mb20" disabled="true" />
+			</form>
+			<a href="resetPWD.jsp"><font color="blue" size="2px">忘记密码</font></a>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a
+				href="register.jsp"><font color="blue" size="2px">注册账号</font></a>
+		</div>
 	</center>
-
 </body>
 </html>
