@@ -49,7 +49,7 @@ $().ready(function() {
 	      },
 	      passWord1: {
 	        required: true,
-	        equalTo: "#password"
+	        equalTo: "#passWord"
 	      },
 	      email: {
 	        required: true,
@@ -61,16 +61,16 @@ $().ready(function() {
 	        isMobile : true
 	      },
 	    messages: {
-	      username: {
+	      userName: {
 	        required: "请输入用户名",
 	        minlength: "用户名最少四位"
 	      },
-	      password: {
+	      passWord: {
 	        required: "请输入密码",
 	        minlength: "密码长度不能小于六位"
 	      },
-	      confirm_password: {
-	        required: "请输入密码",
+	     passWord1: {
+	        required: "请再输一次密码",
 	        equalTo: "两次密码输入不一致"
 	      },
 	      email: "请输入一个有效的邮箱",
@@ -140,6 +140,7 @@ $().ready(function() {
 			return false;
 		}
 		$("#regForm").submit(); */
+		$("#regForm").submit(); 
 	 }
 </script>
 </body>
