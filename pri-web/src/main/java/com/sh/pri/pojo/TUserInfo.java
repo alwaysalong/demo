@@ -14,8 +14,11 @@ import java.util.Date;
   `last_login_time` date NOT NULL DEFAULT '0000-00-00' COMMENT '最后登录时间',
   `last_login_ip` varchar(30) NOT NULL DEFAULT '0' COMMENT '最后登录IP',
   `update_time` date NOT NULL DEFAULT '0000-00-00' COMMENT '更新时间',
-  `sex` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '性别'
+  `sex` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '性别',
+  `status` tinyint(3) NOT NULL DEFAULT '0' COMMENT '用户状态'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户表';
+
+
 
 
 
@@ -35,6 +38,14 @@ public class TUserInfo {
 	private String lastLoginIp;
 	private String updateTime;
 	private int sex;
+	private int status;
+	
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -108,7 +119,7 @@ public class TUserInfo {
 				+ ", regTime=" + regTime + ", regIp=" + regIp
 				+ ", lastLoginTime=" + lastLoginTime + ", lastLoginIp="
 				+ lastLoginIp + ", updateTime=" + updateTime + ", sex=" + sex
-				+ "]";
+				+ ", status=" + status + "]";
 	}
 	
 	
