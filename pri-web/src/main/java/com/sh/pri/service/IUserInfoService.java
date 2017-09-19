@@ -2,6 +2,8 @@ package com.sh.pri.service;
 
 import java.util.Map;
 
+import com.sh.pri.pojo.TUserInfo;
+
 public interface IUserInfoService {
 
 	/**
@@ -18,7 +20,7 @@ public interface IUserInfoService {
 	/**
 	 * 新增用户
 	 */
-	public Map<String, Object> addUser(String userName,String passWord,String sex );
+	public Map<String, Object> addUser(TUserInfo userInfo);
 	
 	/**
 	 * 删除用户,逻辑删除
@@ -31,4 +33,9 @@ public interface IUserInfoService {
 	 */
 	public Map<String, Object> updatePWD(String userName, String passWord,String oldPWD);
 
+	/*
+	 * 根据用户名查询用户
+	 */
+	public Map<String, Object> queryUserByName(String userName);
+	
 }

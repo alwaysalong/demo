@@ -5,38 +5,55 @@
 
 <mapper namespace="com.sh.pri.dao.UserInfoDao">
 
-	<resultMap type="com.sh.pri.pojo.UserInfo" id="userInfoMap">
+	<resultMap type="com.sh.pri.pojo.TUserInfo" id="userInfoMap">
 		<id column="id" property="id" />
 		<result column="username" property="userName" />
 		<result column="password" property="passWord" />
+		<result column="email" property="email" />
+		<result column="mobile" property="mobile" />
+		<result column="reg_time" property="regTime" />
+		<result column="reg_ip" property="regIp" />
+		<result column="last_login_time" property="lastLoginTime" />
+		<result column="last_login_ip" property="lastLoginIp" />
+		<result column="update_time" property="updateTime" />
+		<result column="sex" property="sex" />
 		<result column="status" property="status" />
 	</resultMap>
 	<select id="queryUserInfo" resultType="UserInfo" resultMap="userInfoMap">
 
 		SELECT *
-		FROM userinfo WHERE
-		username = #{userName} and password = #{passWord} and status = 0
-	</select>
-	
-	<select id="queryByName"  resultType="UserInfo"  resultMap="userInfoMap">
-
-		SELECT *
-		FROM userinfo WHERE
-		username = #{userName} and status = 0
+		FROM t_user_info WHERE
+		username = #{userName} and password =
+		#{passWord} and status = 0
 	</select>
 
-	<insert id="addUser" parameterType="com.sh.pri.pojo.UserInfo" >
-		INSERT INTO userinfo (username,password,sex) VALUES
-		(#{userName},#{passWord},#{sex})
-	</insert>
+
+
+
+
 	<!-- <delete id="deleUser"> DELETE FROM userinfo WHERE id = #{id} </delete> -->
 	<!-- 删除用户,逻辑删除 -->
 	<update id="deleUser">
-		update userinfo set status = 1 where username =
+		update t_user_info set status = 1 where username =
 		#{userName} and password = #{passWord}
 	</update>
 	<!-- 修改密码 -->
 	<update id="updatePWD">
-		update userinfo set password = #{passWord} where username = #{userName}
+		update t_user_info set password = #{passWord} where
+		username = #{userName}
 	</update>
+
+	<select id="queryUserByName" resultType="TUserInfo" resultMap="userInfoMap">
+
+		SELECT *
+		FROM t_user_info WHERE
+		username = #{userName} and status = 0
+	</select>
+
+	<insert id="addUser" parameterType="com.sh.pri.pojo.TUserInfo">
+		INSERT INTO t_user_info
+		(username,password,email,mobile,reg_time,reg_ip,last_login_time,last_login_ip,update_time,sex,status)
+		VALUES
+		(#{userName},#{passWord},#{email},#{mobile},#{regTime},#{regIp},#{lastLoginTime},#{lastLoginIp},#{updateTime},#{sex},0)
+	</insert>
 </mapper>

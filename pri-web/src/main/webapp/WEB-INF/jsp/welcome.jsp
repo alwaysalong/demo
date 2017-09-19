@@ -15,24 +15,6 @@
 
 </head>
 <body>
-
-
-	<%-- <form id="select" action="/user/queryUserById" method="post">
-		id: <input type="text" name="id" id="id" value="" /> <br> <input
-			type="submit" onclick="select()" value="查询" />
-
-
-	</form>
-
-	<br />
-	<br />
-	<br /> id : ${requestScope.user.id}
-	<br />
-	<br /> 名字 : ${requestScope.user.name}
-	<br />
-	<br /> 年龄 : ${requestScope.user.age}
-	<br />
- --%>
 	<center>
 		<font color="blue">欢迎您: ${sessionScope.userName}
 	</center>

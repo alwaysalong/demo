@@ -26,7 +26,7 @@
 <body>
 
 	<center>
-		<p><font>恭喜,您已注册成功,<span id="mes">3</span>秒钟后将自动跳转到登录页面...</font></p>
+		<p><font>恭喜,您已成为第<font color="red"> ${sessionScope.userId}</font>位会员,<span id="mes">3</span>秒钟后将自动跳转到登录页面...</font></p>
 		<p><font>如未自动跳转,请点击</font><a><font color="blue">这里</font></a>...</p>
 	</center>
 

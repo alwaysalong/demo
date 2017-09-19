@@ -39,15 +39,8 @@ public class LoginController {
 		} catch (Exception e) {
 			log.info("LoginController.loginIn  exception : " + e);
 			log.info(e.getMessage(), e);
-			// e.printStackTrace();
 			return "redirect:/error.jsp";
 		}
-		// if (result.get("code").equals(ConstantsClass.PARAMETER_ERROR)) {
-		// resultMap.put("msg", "账号或密码错误,请重新登录!");
-		// return resultMap;
-		// request.getSession().setAttribute("error", "用户名或密码不能为空!");
-		// return "redirect:/login.jsp";
-		// }else
 		if (result.get("code").equals(ConstantsClass.REQUEST_FAIL)) {
 			request.getSession().setAttribute("error", "用户名或密码错误!");
 			return "redirect:/login.jsp";
