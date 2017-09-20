@@ -38,7 +38,7 @@ public class UserInfoServiceImpl implements IUserInfoService {
 			return map;
 		}
 		String pwd = DigestUtils.md5Hex(passWord);
-		UserInfo result = userInfoDao.queryUserInfo(userName, pwd);
+		TUserInfo result = userInfoDao.queryUserInfo(userName, pwd);
 		result.setPassWord(null);
 		map.put("msg", "查询成功!");
 		map.put("id", result.getId());
@@ -48,6 +48,7 @@ public class UserInfoServiceImpl implements IUserInfoService {
 
 	public Map<String, Object> addUser(TUserInfo userInfo) {
 		try {
+			userInfo.setPassWord(DigestUtils.md5Hex(userInfo.getPassWord()));
 			userInfo.setRegTime(new Date());
 			userInfo.setRegIp(String.valueOf(InetAddress.getLocalHost().getHostAddress()));
 			log.info(">>>>>>>>>>>>>>>>>>>"+userInfo);
@@ -103,7 +104,7 @@ public class UserInfoServiceImpl implements IUserInfoService {
 			return map;
 		}
 		String pwd = DigestUtils.md5Hex(passWord);
-		UserInfo user = userInfoDao.queryUserInfo(userName, pwd);
+		TUserInfo user = userInfoDao.queryUserInfo(userName, pwd);
 		if (user == null) {
 			map.put("msg", "用户名或密码不正确!");
 			return map;
@@ -122,7 +123,7 @@ public class UserInfoServiceImpl implements IUserInfoService {
 			return map;
 		}
 		String pwd = DigestUtils.md5Hex(oldPWD);
-		UserInfo user = userInfoDao.queryUserInfo(userName, pwd);
+		TUserInfo user = userInfoDao.queryUserInfo(userName, pwd);
 		if (user == null) {
 			map.put("msg", "用户名或密码不正确!");
 			return map;

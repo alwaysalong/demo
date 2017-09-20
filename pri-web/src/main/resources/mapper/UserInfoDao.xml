@@ -19,16 +19,13 @@
 		<result column="sex" property="sex" />
 		<result column="status" property="status" />
 	</resultMap>
-	<select id="queryUserInfo" resultType="UserInfo" resultMap="userInfoMap">
+	<select id="queryUserInfo" resultType="TUserInfo" resultMap="userInfoMap">
 
 		SELECT *
 		FROM t_user_info WHERE
 		username = #{userName} and password =
 		#{passWord} and status = 0
 	</select>
-
-
-
 
 
 	<!-- <delete id="deleUser"> DELETE FROM userinfo WHERE id = #{id} </delete> -->
@@ -38,10 +35,10 @@
 		#{userName} and password = #{passWord}
 	</update>
 	<!-- 修改密码 -->
-	<update id="updatePWD">
+	<!-- <update id="updatePWD">
 		update t_user_info set password = #{passWord} where
 		username = #{userName}
-	</update>
+	</update> -->
 
 	<select id="queryUserByName" resultType="TUserInfo" resultMap="userInfoMap">
 
@@ -52,8 +49,8 @@
 
 	<insert id="addUser" parameterType="com.sh.pri.pojo.TUserInfo">
 		INSERT INTO t_user_info
-		(username,password,email,mobile,reg_time,reg_ip,last_login_time,last_login_ip,update_time,sex,status)
+		(username,password,email,mobile,reg_time,reg_ip,sex,status)
 		VALUES
-		(#{userName},#{passWord},#{email},#{mobile},#{regTime},#{regIp},#{lastLoginTime},#{lastLoginIp},#{updateTime},#{sex},0)
+		(#{userName},#{passWord},#{email},#{mobile},#{regTime},#{regIp},#{sex},0)
 	</insert>
 </mapper>

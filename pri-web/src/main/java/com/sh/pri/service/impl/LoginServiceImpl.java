@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.sh.pri.commons.ConstantsClass;
 import com.sh.pri.dao.UserInfoDao;
-import com.sh.pri.pojo.UserInfo;
+import com.sh.pri.pojo.TUserInfo;
 import com.sh.pri.service.ILoginService;
 
 @Service
@@ -35,7 +35,7 @@ public class LoginServiceImpl implements ILoginService {
 		}*/
 		try {
 			String pwd = DigestUtils.md5Hex(passWord);
-			UserInfo result = userInfoDao.queryUserInfo(userName, pwd);
+			TUserInfo result = userInfoDao.queryUserInfo(userName, pwd);
 			if (null == result || "".equals(result)) {
 				map.put("code", ConstantsClass.REQUEST_FAIL);
 				map.put("msg", "用户名或密码错误!");

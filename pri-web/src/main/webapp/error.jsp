@@ -13,5 +13,11 @@
 	<p><font color="red"> 出错啦...</font></p>
 	<p>点击<a href="${pageContext.request.contextPath}/login.jsp"><font color="blue">[这里]</font></a>返回登录页面...</p>
 	</center>
+	<input type="button" name="submit" value="返回" onclick="submit();"/>
 </body>
+<script type="text/javascript">
+function submit(){
+	"location.href='javascript:history.go(-1);'"
+}
+</script>
 </html>

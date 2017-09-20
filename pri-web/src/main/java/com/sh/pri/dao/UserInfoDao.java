@@ -10,7 +10,7 @@ public interface UserInfoDao {
 	/**
 	 * 查询用户信息
 	 */
-	public UserInfo queryUserInfo(@Param("userName") String userName, @Param("passWord") String passWord);
+	public TUserInfo queryUserInfo(@Param("userName") String userName, @Param("passWord") String passWord);
 	
 	
 	/**
