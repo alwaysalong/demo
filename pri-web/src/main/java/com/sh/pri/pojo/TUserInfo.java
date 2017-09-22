@@ -4,7 +4,7 @@ import java.util.Date;
 
 
 /**CREATE TABLE `t_user_info` (
-  `id` bigint(10) unsigned NOT NULL COMMENT '用户ID',
+  `id` bigint(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '用户ID',
   `username` char(16) NOT NULL COMMENT '用户名',
   `password` char(32) NOT NULL COMMENT '密码',
   `email` char(32) NOT NULL COMMENT '用户邮箱',
@@ -15,8 +15,11 @@ import java.util.Date;
   `last_login_ip` varchar(30) NOT NULL DEFAULT '0' COMMENT '最后登录IP',
   `update_time` date NOT NULL DEFAULT '0000-00-00' COMMENT '更新时间',
   `sex` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '性别',
-  `status` tinyint(3) NOT NULL DEFAULT '0' COMMENT '用户状态'
+  `status` tinyint(3) NOT NULL DEFAULT '0' COMMENT '用户状态',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户表';
+
+
 
 
 
