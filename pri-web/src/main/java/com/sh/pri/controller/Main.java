@@ -22,14 +22,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class Main {
 
 	// 地址
-	private static final String URL = "http://www.ule.com/";
+	private static final String URL = "http://desk.zol.com.cn/";
 	// 获取img标签正则
 	// private static final String IMGURL_REG = "<img.*src=(.*?)[^>]*?>";
 	private static final String IMGURL_REG = "<img.*src=(.*?)[^>]*?>";
 	// 获取src路径的正则
 	// http://img06.tooopen.com/images/20170321/tooopen_sl_202673156116.jpg
 	// http://img03.tooopen.com/thumbnails/20130702/x_08383297.jpg
-	private static final String IMGSRC_REG = "(//pic)(.*?)(jpg)";
+//	src="http://desk.fd.zol-img.com.cn/t_s208x130c5/g5/M00/01/0E/ChMkJ1bKwbqICS9oAAzy-ziI3pAAALGcwOyNbEADPMT693.jpg"
+			
+	private static final String IMGSRC_REG = "(src|SRC)(.*?)(jpg\")";
+//	private static final String IMGSRC_REG = "(//desk)(.*?)(jpg)";
 //	private static final String IMGSRC_REG = "(http://img)(.*?)(jpg)";
 
 	// private static final String IMGSRC_REG = "(src|SRC)=(\"|\')(.*?)(\"|\')";
@@ -89,11 +92,13 @@ public class Main {
 	// 获取ImageSrc地址
 	private List<String> getImageSrc(List<String> listimageurl) {
 		List<String> listImageSrc = new ArrayList<String>();
+//		src="http://desk.fd.zol-img.com.cn/t_s208x130c5/g5/M00/01/0E/ChMkJ1bKwbqICS9oAAzy-ziI3pAAALGcwOyNbEADPMT693.jpg"
 		for (String image : listimageurl) {
-			Matcher matcher = Pattern.compile(IMGSRC_REG).matcher(image);// 正则匹配出有用的图片src
+			String image1 = image.replace(" ", "");
+			Matcher matcher = Pattern.compile(IMGSRC_REG).matcher(image1);// 正则匹配出有用的图片src
 			while (matcher.find()) {// 如果能匹配到就 对匹配到的字符串进行截取 取出我们需要的图片地址
-				listImageSrc.add(matcher.group().substring(0,
-						matcher.group().length()));
+				listImageSrc.add(matcher.group().substring(5,
+						matcher.group().length() - 1));
 			}
 		}
 		return listImageSrc;
@@ -110,7 +115,12 @@ public class Main {
 				// 取得最后一个/后面的字符串 作为图片名
 				String imageName = url.substring(url.lastIndexOf("/") + 1,
 						url.length());
-				URL uri = new URL("http:"+url);
+				URL uri = null;
+				if (url.indexOf("http:") != -1) {
+					uri = new URL(url);
+				}else{
+					uri = new URL("http:"+url);
+				}
 				InputStream in = uri.openStream();// 打开流
 				OutputStream os = null;// 定义一个输出流
 				// 创建一个文件夹
