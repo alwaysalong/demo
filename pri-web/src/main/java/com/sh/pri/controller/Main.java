@@ -14,6 +14,11 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RequestMapping("/down")
+@Controller
 public class Main {
 
 	// 地址
@@ -48,6 +53,7 @@ public class Main {
 
 	}
 
+	
 	// 获取HTML内容
 	private String getHtml(String url) throws Exception {
 		URL url1 = new URL(url);
