@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.catalina.connector.Request;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
@@ -30,17 +29,17 @@ public class Main {
 	// 获取img标签正则
 	// private static final String IMGURL_REG = "<img.*src=(.*?)[^>]*?>";
 	private static final String IMGURL_REG = "<img.*src=(.*?)[^>]*?>";
+	//获取a标签的正则
+	//<a href="/bizhi/7068_87674_2.html" target="_blank"></a>
+	private static final String A_REG = "<a.*href=(.*?)[^>]*?>";
 	// 获取src路径的正则
-	// http://img06.tooopen.com/images/20170321/tooopen_sl_202673156116.jpg
-	// http://img03.tooopen.com/thumbnails/20130702/x_08383297.jpg
-//	src="http://desk.fd.zol-img.com.cn/t_s208x130c5/g5/M00/01/0E/ChMkJ1bKwbqICS9oAAzy-ziI3pAAALGcwOyNbEADPMT693.jpg"
-			
-	private static final String IMGSRC_REG = "(src|SRC)(.*?)(jpg\")";
-//	private static final String IMGSRC_REG = "(//desk)(.*?)(jpg)";
-//	private static final String IMGSRC_REG = "(http://img)(.*?)(jpg)";
+	//img标签的src正则表达式 src="http://desk.fd.zol-img.com.cn/t_s208x130c5/g5/M00/01/0E/ChMkJ1bKwbqICS9oAAzy-ziI3pAAALGcwOyNbEADPMT693.jpg"
+//	private static final String IMGSRC_REG = "(src=\"|SRC=\")(.*?)(jpg\")";
+	private static final String IMGSRC_REG = "(src|SRC)=\".*?\"";//匹配的是以src="开头的 直到下一个"结尾的内容
+	//a标签的href正则表达式   href="/bizhi/7068_87674_2.html"
+	private static final String AHREF_REG = "(href|HREF)=\".*?\"";
 
-	// private static final String IMGSRC_REG = "(src|SRC)=(\"|\')(.*?)(\"|\')";
-
+	
 	public static void main(String[] args) {
 
 		try {
@@ -117,6 +116,10 @@ public class Main {
 			Date begindate = new Date();
 			OutputStream os = null;// 定义一个输出流
 			for (String url : listImgSrc) {
+				//判断src里的地址不是以图片格式结尾的话  就跳过
+				if (!(url.toLowerCase().endsWith(".jpg") || url.toLowerCase().endsWith(".bmp"))) {
+					continue;
+				}
 				// 单张图片开始下载时间
 				Date begindate2 = new Date();
 				// 取得最后一个/后面的字符串 作为图片名

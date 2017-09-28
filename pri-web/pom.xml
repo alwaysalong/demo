@@ -147,6 +147,26 @@
 			<version>20140107</version>
 		</dependency>
 
+
+
+		<!-- 解析响应的html 也可以发送http请求 但是功能没有httpClient强大 -->
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.7.2</version>
+		</dependency>
+		<!-- 发送http请求 接收 响应 -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpcore</artifactId>
+			<version>4.4.6</version>
+		</dependency>
+
 	</dependencies>
 
 
