@@ -14,6 +14,9 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.catalina.connector.Request;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -21,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class Main {
 
+	private  static Log log = LogFactory.getLog(Main.class);
 	// 地址
 	private static final String URL = "http://desk.zol.com.cn/";
 	// 获取img标签正则
@@ -51,6 +55,7 @@ public class Main {
 			cm.Download(imgSrc);
 		} catch (Exception e) {
 			System.out.println("发生错误");
+			log.info("发生错误:exception :"+e.getMessage());
 			e.printStackTrace();
 		}
 
@@ -64,7 +69,6 @@ public class Main {
 		InputStream in = connection.getInputStream();
 		InputStreamReader isr = new InputStreamReader(in);// 字节流 一次读取一个字符
 		BufferedReader br = new BufferedReader(isr);// 读取一个文本行
-
 		String line;
 		StringBuffer sb = new StringBuffer();
 		while ((line = br.readLine()) != null) {// 每次读取一行 如果不为空
@@ -86,6 +90,7 @@ public class Main {
 		while (matcher.find()) {
 			listimgurl.add(matcher.group());
 		}
+		log.info("图片地址list集合  :"+listimgurl);
 		return listimgurl;
 	}
 
@@ -101,16 +106,18 @@ public class Main {
 						matcher.group().length() - 1));
 			}
 		}
+		log.info("图片的下载地址集合 : "+listImageSrc);
 		return listImageSrc;
 	}
 
 	// 下载图片
 	private void Download(List<String> listImgSrc) {
 		try {
-			// 开始时间
+			// 抓取图片开始时间
 			Date begindate = new Date();
+			OutputStream os = null;// 定义一个输出流
 			for (String url : listImgSrc) {
-				// 开始时间
+				// 单张图片开始下载时间
 				Date begindate2 = new Date();
 				// 取得最后一个/后面的字符串 作为图片名
 				String imageName = url.substring(url.lastIndexOf("/") + 1,
@@ -122,7 +129,6 @@ public class Main {
 					uri = new URL("http:"+url);
 				}
 				InputStream in = uri.openStream();// 打开流
-				OutputStream os = null;// 定义一个输出流
 				// 创建一个文件夹
 				File f = new File("d:\\webimg\\");
 				f.mkdirs();// mkdirs可以创建多级目录
@@ -133,13 +139,18 @@ public class Main {
 					os.write(buffer, 0, bytesRead);
 				}
 				Date overdate = new Date();
-				double time = overdate.getTime() - begindate.getTime();
-				System.out.println("总耗时：" + time / 1000 + "s");
-				os.close();
+				double time = overdate.getTime() - begindate2.getTime();
+				System.out.println("------>单张下载耗时：" + time / 1000 + "秒");
 			}
+			os.close();
+			Date endDate = new Date();
+			double sumTime = endDate.getTime() - begindate.getTime();
 			System.out.println("完成。。。。。。。。。。。。。。。。");
+			System.out.println(">>>>>>>>>>>>>>>>>>>>>抓取所以资源共耗时  :"+sumTime/1000 + "秒");
 		} catch (Exception e) {
 			System.out.println("下载失败");
+			log.info("下载失败:exception :"+e.getMessage());
+			e.printStackTrace();
 		}
 	}
 }
