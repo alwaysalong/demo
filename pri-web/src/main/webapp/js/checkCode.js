@@ -9,11 +9,9 @@ function createCode() {
 	var checkCode = document.getElementById("code");
 	var random = new Array( 1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd', 'e',
 			'f', 'g', 'h',  'j', 'k', 'm', 'n', 'p', 'q', 'r', 's', 't',
-			'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G',
-			'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
-			'W', 'X', 'Y', 'Z');// 随机数
+			'u', 'v', 'w', 'x', 'y', 'z');// 随机数
 	for (var i = 0; i < codeLength; i++) {// 循环操作
-		var index = Math.floor(Math.random() * 55);// 取得随机数的索引（0~55）
+		var index = Math.floor(Math.random() * 31);// 取得随机数的索引（0~31）
 		code += random[index];// 根据索引取得随机数加到code上
 	}
 	checkCode.value = code;// 把code值赋给验证码

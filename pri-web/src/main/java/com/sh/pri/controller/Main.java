@@ -23,23 +23,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class Main {
 
-	private  static Log log = LogFactory.getLog(Main.class);
+	private static Log log = LogFactory.getLog(Main.class);
 	// 地址
 	private static final String URL = "http://desk.zol.com.cn/";
 	// 获取img标签正则
 	// private static final String IMGURL_REG = "<img.*src=(.*?)[^>]*?>";
 	private static final String IMGURL_REG = "<img.*src=(.*?)[^>]*?>";
-	//获取a标签的正则
-	//<a href="/bizhi/7068_87674_2.html" target="_blank"></a>
+	// 获取a标签的正则
+	// <a href="/bizhi/7068_87674_2.html" target="_blank"></a>
 	private static final String A_REG = "<a.*href=(.*?)[^>]*?>";
 	// 获取src路径的正则
-	//img标签的src正则表达式 src="http://desk.fd.zol-img.com.cn/t_s208x130c5/g5/M00/01/0E/ChMkJ1bKwbqICS9oAAzy-ziI3pAAALGcwOyNbEADPMT693.jpg"
-//	private static final String IMGSRC_REG = "(src=\"|SRC=\")(.*?)(jpg\")";
-	private static final String IMGSRC_REG = "(src|SRC)=\".*?\"";//匹配的是以src="开头的 直到下一个"结尾的内容
-	//a标签的href正则表达式   href="/bizhi/7068_87674_2.html"
+	// img标签的src正则表达式
+	// src="http://desk.fd.zol-img.com.cn/t_s208x130c5/g5/M00/01/0E/ChMkJ1bKwbqICS9oAAzy-ziI3pAAALGcwOyNbEADPMT693.jpg"
+	// private static final String IMGSRC_REG = "(src=\"|SRC=\")(.*?)(jpg\")";
+	private static final String IMGSRC_REG = "(src|SRC)=\".*?\"";// 匹配的是以src="开头的 直到下一个"结尾的内容
+	// a标签的href正则表达式 href="/bizhi/7068_87674_2.html"
 	private static final String AHREF_REG = "(href|HREF)=\".*?\"";
 
-	
 	public static void main(String[] args) {
 
 		try {
@@ -54,13 +54,12 @@ public class Main {
 			cm.Download(imgSrc);
 		} catch (Exception e) {
 			System.out.println("发生错误");
-			log.info("发生错误:exception :"+e.getMessage());
+			log.info("发生错误:exception :" + e.getMessage());
 			e.printStackTrace();
 		}
 
 	}
 
-	
 	// 获取HTML内容
 	private String getHtml(String url) throws Exception {
 		URL url1 = new URL(url);
@@ -89,14 +88,14 @@ public class Main {
 		while (matcher.find()) {
 			listimgurl.add(matcher.group());
 		}
-		log.info("图片地址list集合  :"+listimgurl);
+		log.info("图片地址list集合  :" + listimgurl);
 		return listimgurl;
 	}
 
 	// 获取ImageSrc地址
 	private List<String> getImageSrc(List<String> listimageurl) {
 		List<String> listImageSrc = new ArrayList<String>();
-//		src="http://desk.fd.zol-img.com.cn/t_s208x130c5/g5/M00/01/0E/ChMkJ1bKwbqICS9oAAzy-ziI3pAAALGcwOyNbEADPMT693.jpg"
+		// src="http://desk.fd.zol-img.com.cn/t_s208x130c5/g5/M00/01/0E/ChMkJ1bKwbqICS9oAAzy-ziI3pAAALGcwOyNbEADPMT693.jpg"
 		for (String image : listimageurl) {
 			String image1 = image.replace(" ", "");
 			Matcher matcher = Pattern.compile(IMGSRC_REG).matcher(image1);// 正则匹配出有用的图片src
@@ -105,7 +104,7 @@ public class Main {
 						matcher.group().length() - 1));
 			}
 		}
-		log.info("图片的下载地址集合 : "+listImageSrc);
+		log.info("图片的下载地址集合 : " + listImageSrc);
 		return listImageSrc;
 	}
 
@@ -116,8 +115,9 @@ public class Main {
 			Date begindate = new Date();
 			OutputStream os = null;// 定义一个输出流
 			for (String url : listImgSrc) {
-				//判断src里的地址不是以图片格式结尾的话  就跳过
-				if (!(url.toLowerCase().endsWith(".jpg") || url.toLowerCase().endsWith(".bmp"))) {
+				// 判断src里的地址不是以图片格式结尾的话 就跳过
+				if (!(url.toLowerCase().endsWith(".jpg") || url.toLowerCase()
+						.endsWith(".bmp"))) {
 					continue;
 				}
 				// 单张图片开始下载时间
@@ -128,8 +128,8 @@ public class Main {
 				URL uri = null;
 				if (url.indexOf("http:") != -1) {
 					uri = new URL(url);
-				}else{
-					uri = new URL("http:"+url);
+				} else {
+					uri = new URL("http:" + url);
 				}
 				InputStream in = uri.openStream();// 打开流
 				// 创建一个文件夹
@@ -149,10 +149,11 @@ public class Main {
 			Date endDate = new Date();
 			double sumTime = endDate.getTime() - begindate.getTime();
 			System.out.println("完成。。。。。。。。。。。。。。。。");
-			System.out.println(">>>>>>>>>>>>>>>>>>>>>抓取所以资源共耗时  :"+sumTime/1000 + "秒");
+			System.out.println(">>>>>>>>>>>>>>>>>>>>>抓取所以资源共耗时  :" + sumTime
+					/ 1000 + "秒");
 		} catch (Exception e) {
 			System.out.println("下载失败");
-			log.info("下载失败:exception :"+e.getMessage());
+			log.info("下载失败:exception :" + e.getMessage());
 			e.printStackTrace();
 		}
 	}

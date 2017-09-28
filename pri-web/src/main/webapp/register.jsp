@@ -92,7 +92,7 @@ div {
 			id="regForm" name="regForm" method="post">
 			<div>
 				<label>登录名：</label> <input type="text" name="userName" id="userName"
-					placeholder="请输入账号" />
+					placeholder="请输入账号" value="${userInfo.userName}"/>
 			</div>
 			<div>
 				<label>密码：</label> <input name="passWord" type="password"
@@ -109,11 +109,11 @@ div {
 			</div>
 			<div>
 				<label>邮箱：</label> <input type="text" name="email" id="email"
-					placeholder="请输入邮箱" />
+					placeholder="请输入邮箱" value="${userInfo.email}"/>
 			</div>
 			<div>
 				<label>手机号：</label> <input type="text" name="mobile" id="mobile"
-					placeholder="请输入手机号" />
+					placeholder="请输入手机号" value="${userInfo.mobile}"/>
 			</div>
 			<div>
 				<input type="button" id="code" onclick="createCode()" /> <a

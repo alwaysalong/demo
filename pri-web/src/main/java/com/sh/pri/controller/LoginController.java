@@ -29,34 +29,44 @@ public class LoginController {
 	private ILoginService loginService;
 
 	@RequestMapping(value = "/loginIn", method = RequestMethod.POST)
-	public String loglinIn(HttpServletRequest request,
+	public void loglinIn(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		Map<String, Object> result = new HashMap<String, Object>();
 		String userName = request.getParameter("username");
 		String passWord = request.getParameter("password");
+		if (null == userName || "".equals(userName) || null == passWord
+				|| "".equals(passWord)) {
+			log.error("LoginController . loglinIn 的参数不能为空! ");
+			request.getSession().setAttribute("error", "请输入正确的账号密码!");
+			request.getRequestDispatcher("/login.jsp").forward(request,
+					response);
+			request.getSession().invalidate();
+			return;
+		}
 		try {
 			result = loginService.loginIn(userName, passWord);
+			if (result.get("code").equals(ConstantsClass.REQUEST_FAIL)) {
+				request.getSession().setAttribute("error", "用户名或密码错误!");
+				response.sendRedirect("/login.jsp");
+			} else {
+				request.getSession().setAttribute("userId", result.get("id"));
+				request.getSession().setAttribute("userName", userName);
+				request.getRequestDispatcher("/WEB-INF/jsp/welcome.jsp")
+						.forward(request, response);
+				return;
+			}
 		} catch (Exception e) {
 			log.info("LoginController.loginIn  exception : " + e);
 			log.info(e.getMessage(), e);
-			return "redirect:/error.jsp";
+			response.sendRedirect("/error.jsp");
+			return;
 		}
-		if (result.get("code").equals(ConstantsClass.REQUEST_FAIL)) {
-			request.getSession().setAttribute("error", "用户名或密码错误!");
-			return "redirect:/login.jsp";
-		} else {
-			request.getSession().setAttribute("userId", result.get("id"));
-			request.getSession().setAttribute("userName", userName);
-			request.getRequestDispatcher("/WEB-INF/jsp/welcome.jsp").forward(
-					request, response);
-			return null;
-		}
-
 	}
 
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
 		return "redirect:/login.jsp";
+
 	}
 }

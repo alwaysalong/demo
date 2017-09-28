@@ -73,44 +73,6 @@ div {
 <script type="text/javascript" src="/js/checkCode.js">
 </script>
 <script type="text/javascript">
-/*  function doSubmit() {
-	var code1 = $("#input").val();
-	var username = $("#username").val().replace(/(^\s*)|(\s*$)/g, '');//去空格
-	var password = $("#password").val().replace(/(^\s*)|(\s*$)/g, '');
-	if(username == '' || username == undefined || username == null){
-		alert("请输入有效的账号!");
-		return false;
-	}
-	if(password == '' || password == undefined || password == null){
-		alert("密码不能为空!");
-		return false;
-	}
-	if(code != code1){
-		alert("验证码错误!");
-		return false;
-	} 
-	$("#indexform").submit();
-}  */
-	/* // 刷新图片  
-	function changeImg() {
-		var imgSrc = $("#imgObj");
-		var src = imgSrc.attr("src");
-		imgSrc.attr("src", changeUrl(src));
-	}
-	//为了使每次生成图片不一致，即不让浏览器读缓存，所以需要加上时间戳  
-	function changeUrl(url) {
-		var timestamp = (new Date()).valueOf();
-		var index = url.indexOf("?", url);
-		if (index > 0) {
-			url = url.substring(0, url.indexOf(url, "?"));
-		}
-		if ((url.indexOf("&") >= 0)) {
-			url = url + "×tamp=" + timestamp;
-		} else {
-			url = url + "?timestamp=" + timestamp;
-		}
-		return url;
-	} */
 	
 	//先加载完全页面
 	$(document).ready(function() {
@@ -166,7 +128,6 @@ div {
 <body>
 	<center>
 		<div>
-			<!-- <h1 style="color: red">登录</h1> -->
 			<div class="login-page">
 				<h3>欢迎您</h3>
 				<font color="red">${sessionScope.error }</font>
@@ -178,7 +139,7 @@ div {
 				<table border="0">
 					<div>
 						<label for="username">账号：</label> <input type="text"
-							placeholder="请输入账号" name="username" id="username" onblur="aa()">
+							placeholder="请输入账号" name="username" id="username" onblur="aa()" value="">
 						<div id="hint" style="display: inline;">
 							<font color="red" size="1px">*账号不能为空</font>
 						</div>
