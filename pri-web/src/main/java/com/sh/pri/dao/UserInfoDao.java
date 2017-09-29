@@ -1,5 +1,7 @@
 package com.sh.pri.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 import com.sh.pri.pojo.TUserInfo;
@@ -50,5 +52,9 @@ public interface UserInfoDao {
 	 * 删除用户(逻辑删除)
 	 */
 	
+	/*
+	 * 分页查询所有用户
+	 */
+	public List<TUserInfo> selectUserAll();
 
 }

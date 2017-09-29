@@ -3,6 +3,7 @@ package com.sh.pri.service.impl;
 import java.net.InetAddress;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.codec.digest.DigestUtils;
@@ -123,6 +124,20 @@ public class UserInfoServiceImpl implements IUserInfoService {
 			log.info(e.getMessage(),e);
 			throw new RuntimeException();
 		}
+	}
+	
+	/*
+	 * 查所有用户
+	 * @see com.sh.pri.service.IUserInfoService#selectUserAll()
+	 */
+	public List<TUserInfo> selectUserAll(){
+		List<TUserInfo> userList = null;
+		try {
+			userList = userInfoDao.selectUserAll();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return userList;
 	}
 
 }

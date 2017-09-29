@@ -53,4 +53,9 @@
 		VALUES
 		(#{userName},#{passWord},#{email},#{mobile},#{regTime},#{regIp},#{sex},0)
 	</insert>
+	
+	<!-- 查所有用户 -->
+	<select id="selectUserAll" resultMap="userInfoMap">
+		SELECT * FROM t_user_info
+	</select>
 </mapper>

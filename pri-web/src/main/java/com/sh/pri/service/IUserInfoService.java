@@ -1,5 +1,6 @@
 package com.sh.pri.service;
 
+import java.util.List;
 import java.util.Map;
 
 import com.sh.pri.pojo.TUserInfo;
@@ -38,4 +39,9 @@ public interface IUserInfoService {
 	 */
 	public Map<String, Object> queryUserByName(String userName);
 	
+	
+	/*
+	 * 查所有用户
+	 */
+	public List<TUserInfo> selectUserAll();
 }
