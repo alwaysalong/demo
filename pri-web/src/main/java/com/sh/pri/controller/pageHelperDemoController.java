@@ -32,6 +32,5 @@ public class pageHelperDemoController {
 		model.addAttribute("page", p);
 		model.addAttribute("userList", userList);
 		return "pageUser";
-		
 	}
 }
