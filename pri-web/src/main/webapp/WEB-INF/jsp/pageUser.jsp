@@ -5,15 +5,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../../js/jquery-1.8.3.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>分页查询</title>
-
 <style>
 </style>
-<script type="text/javascript">
-	
-</script>
 </head>
 <body>
 	<center>
@@ -29,14 +25,12 @@
 			</tr>
 			<c:forEach begin="0" step="1" items="${userList}" var="list"
 				varStatus="userlist">
-
-
 				<tr>
-				<c:if test="${userlist.count%2==0}">
-					<tr bgcolor="yellow">
-				</c:if>
-				<c:if test="${userlist.count%2!=0}">
-				</c:if>
+					<c:if test="${userlist.count%2==0}">
+						<tr bgcolor="yellow">
+					</c:if>
+					<c:if test="${userlist.count%2!=0}">
+					</c:if>
 					<td>${list.id}</td>
 					<td>${list.userName}</td>
 					<td>${list.email}</td>
@@ -52,11 +46,28 @@
 			</c:forEach>
 		</table>
 		<p>一共${page.pages}页</p>
-		<a href="userList?page=${page.firstPage}">第一页</a> <a
-			href="userList?page=${page.nextPage}">下一页</a> <a
-			href="userList?page=${page.prePage}">上一页</a> <a
-			href="userList?page=${page.lastPage}">最后页</a>
+		<a href="userList?page=${page.firstPage}">第一页</a> 
+		<a href="userList?page=${page.nextPage}">下一页</a> 
+		<a href="userList?page=${page.prePage}">上一页</a> 
+		<a href="userList?page=${page.lastPage}">最后页</a>
 	</center>
-
+	<script type="text/javascript">
+		function aa() {
+			alert("进入离焦事件");
+			var pageindex = document.getElementById("pi").value;
+			alert("pageindex=" + pageindex);
+			var url1 = "${pageContext.request.contextPath}/pageHelper/userList";
+			alert(url1);
+			$.ajax({
+				type : "get",
+				url : url1,
+				data : "page=" + pageindex,
+				success : function(data, textStatus, jqXHR) {
+					alert(data);
+					return true;
+				}
+			});
+		}
+	</script>
 </body>
 </html>
