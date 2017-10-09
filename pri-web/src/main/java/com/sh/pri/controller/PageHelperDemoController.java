@@ -17,7 +17,7 @@ import com.sh.pri.service.IUserInfoService;
 
 @Controller
 @RequestMapping("/pageHelper")
-public class pageHelperDemoController {
+public class PageHelperDemoController {
 
 	@Autowired
 	private IUserInfoService userInfoService;
