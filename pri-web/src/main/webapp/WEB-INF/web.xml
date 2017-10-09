@@ -1,26 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
-  <context-param>
-    <param-name>contextConfigLocation</param-name>
-    <param-value>classpath:spring-mybatis.xml</param-value>
-  </context-param>
-  <welcome-file-list>
-    <welcome-file>login.jsp</welcome-file>
-  </welcome-file-list>
-  <servlet>
-    <servlet-name>demo-dispatcher</servlet-name>
-    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-    <init-param>
-      <param-name>contextConfigLocation</param-name>
-      <param-value>classpath:spring-*.xml</param-value>
-    </init-param>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>demo-dispatcher</servlet-name>
-    <url-pattern>/</url-pattern>
-  </servlet-mapping>
-  <listener>
-    <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
-  </listener>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+	<!-- context-param元素声明应用范围内的初始化参数。 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:spring-mybatis.xml</param-value>
+	</context-param>
+	<!-- 指示服务器在收到引用一个目录名而不是文件名的URL时，使用哪个文件。 -->
+	<welcome-file-list>
+		<welcome-file>login.jsp</welcome-file>
+	</welcome-file-list>
+
+	<!-- 字符集过滤器 -->
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<servlet>
+		<servlet-name>demo-dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<!-- 用来定义参数，可有多个init-param。在servlet类中通过getInitParamenter(String name)方法访问初始化参数 -->
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:spring-*.xml</param-value>
+		</init-param>
+		<!-- 指定当Web应用启动时，装载Servlet的次序。 当值为正数或零时：Servlet容器先加载数值小的servlet，再依次加载其他数值大的servlet. 
+			当值为负或未定义：Servlet容器将在Web客户首次访问这个servlet时加载它 -->
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>demo-dispatcher</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	<!-- 配置Spring里的log4j监听器 -->
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
 </web-app>
