@@ -1,30 +1,13 @@
 package com.sh.pri.controller;
 
-import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.net.URLEncoder;
 import java.util.List;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -37,7 +20,7 @@ import com.sh.pri.service.IUserInfoService;
 
 @Controller
 @RequestMapping("/poiExcle")
-public class PoiExcleController {
+public class PoiExcelController {
 
 	public static final String outPutFile = "D:\\用户信息.xlsx";
 	
@@ -100,4 +83,7 @@ public class PoiExcleController {
 	            e.printStackTrace();
 	        }
 	    }
+	
+	
+	
 }

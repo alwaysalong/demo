@@ -72,6 +72,13 @@ div {
 </style>
 <script type="text/javascript" src="/js/checkCode.js">
 </script>
+<!-- 让背景图片覆盖整个屏幕  -->
+<style type="text/css">   
+     body{      
+        background-image: url(image/backgr.jpg);      
+        background-size:cover;    
+     }      
+ </style>   
 <script type="text/javascript">
 	
 	//先加载完全页面
@@ -124,8 +131,9 @@ div {
 	
 	
 </script>
+
 </head>
-<body>
+<body >
 	<center>
 		<div>
 			<div class="login-page">

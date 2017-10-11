@@ -26,6 +26,16 @@ div {
 	padding: 5px 0;
 }
 </style>
+
+<!-- 让背景图片覆盖整个屏幕  -->
+<style type="text/css">
+body {
+	background-image: url(image/backgr.jpg);
+	background-size: cover;
+}
+</style>
+
+
 <script>
 	$(function() {
 		// 在键盘按下并释放及提交后验证提交表单
@@ -92,7 +102,7 @@ div {
 			id="regForm" name="regForm" method="post">
 			<div>
 				<label>登录名：</label> <input type="text" name="userName" id="userName"
-					placeholder="请输入账号" value="${userInfo.userName}"/>
+					placeholder="请输入账号" value="${userInfo.userName}" />
 			</div>
 			<div>
 				<label>密码：</label> <input name="passWord" type="password"
@@ -109,11 +119,11 @@ div {
 			</div>
 			<div>
 				<label>邮箱：</label> <input type="text" name="email" id="email"
-					placeholder="请输入邮箱" value="${userInfo.email}"/>
+					placeholder="请输入邮箱" value="${userInfo.email}" />
 			</div>
 			<div>
 				<label>手机号：</label> <input type="text" name="mobile" id="mobile"
-					placeholder="请输入手机号" value="${userInfo.mobile}"/>
+					placeholder="请输入手机号" value="${userInfo.mobile}" />
 			</div>
 			<div>
 				<input type="button" id="code" onclick="createCode()" /> <a

@@ -48,6 +48,7 @@ public class LoginController {
 			if (result.get("code").equals(ConstantsClass.REQUEST_FAIL)) {
 				request.getSession().setAttribute("error", "用户名或密码错误!");
 				response.sendRedirect("/login.jsp");
+				request.getSession().setMaxInactiveInterval(1);
 			} else {
 				request.getSession().setAttribute("userId", result.get("id"));
 				request.getSession().setAttribute("userName", userName);
