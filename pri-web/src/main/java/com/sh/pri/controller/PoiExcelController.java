@@ -1,5 +1,6 @@
 package com.sh.pri.controller;
 
+import java.io.File;
 import java.io.OutputStream;
 import java.net.URLEncoder;
 import java.util.List;
@@ -7,6 +8,11 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItem;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -14,26 +20,32 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+import com.sh.pri.commons.ExcelReadAndWrite;
 import com.sh.pri.pojo.TUserInfo;
 import com.sh.pri.service.IUserInfoService;
 
 @Controller
-@RequestMapping("/poiExcle")
+@RequestMapping("/poiExcel")
 public class PoiExcelController {
 
+	private static Log log = LogFactory.getLog(PoiExcelController.class);
 	public static final String outPutFile = "D:\\用户信息.xlsx";
 	
 	@Autowired
 	private IUserInfoService userInfoService;
 	
 	@RequestMapping("/jump")
-	public String downLoadUserInfo(){
-		return "poiExcle";
+	public String downLoadUserInfo(HttpServletRequest request){
+		request.getSession().invalidate();
+		return "poiExcel";
 	}
 	
 	@RequestMapping("/download")
-	 public void downloadExcle(HttpServletRequest req, HttpServletResponse resp) {
+	 public void downloadExcel(HttpServletRequest req, HttpServletResponse resp) {
 	        try {
 	        	List<TUserInfo> userList = userInfoService.selectUserAll();
 	            XSSFWorkbook workbook=new XSSFWorkbook();
@@ -84,6 +96,35 @@ public class PoiExcelController {
 	        }
 	    }
 	
-	
+	@RequestMapping("/upload")
+	public void uploadExcel(@RequestParam(value="uploadFile") MultipartFile Mfile, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		log.info("PoiExcelController.. uploadExcel()  start----");
+		if (Mfile == null) {
+			request.getSession().setAttribute("error", "上传文件不能为空!");
+			request.getSession().invalidate();
+			return;
+		}
+		//获取文件名
+		String fileName = Mfile.getOriginalFilename();
+		//MultipartFile转成file类型
+		CommonsMultipartFile uploadFile = (CommonsMultipartFile)Mfile;
+		DiskFileItem fi = (DiskFileItem)uploadFile.getFileItem();
+		File file = fi.getStoreLocation();
+		//解析excel文件
+		List<List<String>> value = ExcelReadAndWrite.readExcel(fileName, (File)file);
+		for (List<String> list : value) {
+			list.remove(list.size()-1);
+			for (String string : list) {
+				System.out.println("=======excel:"+string);
+			}
+		}
+		//删除缓存文件
+		boolean delete = file.delete();
+		System.out.println(delete);
+		request.getSession().setAttribute("msg", "文件上传完毕!");
+		request.getRequestDispatcher("/WEB-INF/jsp/poiExcel.jsp").forward(request, response);
+		request.getSession().invalidate();
+		return;
+	}
 	
 }

@@ -11,6 +11,7 @@
 		<property name="location" value="classpath:jdbc.properties" />
 	</bean>
 	<!-- 2.数据库连接池 -->
+	<!-- xml配置定义bean的方式 -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="${jdbc.driver}" />

@@ -18,6 +18,11 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.xmlbeans.impl.piccolo.io.FileFormatException;
 
+/**
+ * 解析excel工具类
+ * @author admin
+ *
+ */
 public class ExcelReadAndWrite {
 	private static final String EXTENSION_XLS = "xls";
 	private static final String EXTENSION_XLSX = "xlsx";
@@ -25,11 +30,10 @@ public class ExcelReadAndWrite {
 
 	/***
 	 * 取得Workbook对象(xls和xlsx对象不同,不过都是Workbook的实现类)
-	 *   xls:HSSFWorkbook
-	 *   xlsx：XSSFWorkbook
+	 *   xls:使用HSSFWorkbook
+	 *   xlsx：使用XSSFWorkbook
 	 * @param filePath
 	 * @return
-	 * @throws IOException
 	 */
 	public static Workbook getWorkbook(File file, String filename) throws IOException {
 		Workbook workbook = null;
@@ -64,14 +68,12 @@ public class ExcelReadAndWrite {
 				if (sheet == null) {
 					continue;
 				}
-
 				int firstRowIndex = sheet.getFirstRowNum();
 				int lastRowIndex = sheet.getLastRowNum();
 				log.info("****************count："+lastRowIndex+"************");
 				if (lastRowIndex < 1) {
 					continue;
 				}
-
 				// 读取数据行
 				log.info("****************开始解读数据************");
 				for (int rowIndex = firstRowIndex + 1; rowIndex <= lastRowIndex; rowIndex++) {
@@ -87,7 +89,6 @@ public class ExcelReadAndWrite {
 					result.add(line);
 				}
 				log.info("****************结束解读数据************");
-
 			}
 		} catch (Exception e) {
 			log.info(e.getMessage(), e);
@@ -110,13 +111,11 @@ public class ExcelReadAndWrite {
 		if (cell == null) {
 			return "";
 		}
-
 		if (treatAsStr) {
 			// 虽然excel中设置的都是文本，但是数字文本还被读错，如“1”取成“1.0”
 			// 加上下面这句，临时把它当做文本来读取
 			cell.setCellType(Cell.CELL_TYPE_STRING);
 		}
-
 		if (cell.getCellType() == Cell.CELL_TYPE_BOOLEAN) {
 			return String.valueOf(cell.getBooleanCellValue());
 		} else if (cell.getCellType() == Cell.CELL_TYPE_NUMERIC) {

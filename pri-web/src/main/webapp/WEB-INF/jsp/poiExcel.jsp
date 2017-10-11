@@ -12,12 +12,12 @@
 </style>
 </head>
 <body>
-	<a href="${pageContext.request.contextPath}/poiExcle/download"
+	<a href="${pageContext.request.contextPath}/poiExcel/download"
 		id="download_id" style="text-decoration: none; color: blue;">用户信息下载↓↓↓</a>
 		<br>
 		<br>
 	<form
-		action="${pageContext.request.contextPath}"
+		action="${pageContext.request.contextPath}/poiExcel/upload"
 		id="uploadForm" name="uploadForm" method="post"
 		enctype="multipart/form-data">
 		<!-- <input type="text" id="upfile" name="upfile" readonly="true" placeholder="上传文件"> -->
@@ -26,6 +26,13 @@
 		<br>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="确认上传" onclick="doSubmit()">
 		</form>
+		<div>
+			<c:set var="msg" scope="session" value="${sessionScope.msg }"/>
+			<c:if test="${msg != null }">
+			
+				<font color="red">${sessionScope.msg }</font>
+			</c:if>
+		</div>
 </body>
 <script type="text/javascript">
 function doSubmit(){

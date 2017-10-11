@@ -20,7 +20,7 @@
 	<c:set var="username" scope="session" value="${sessionScope.userName}"/>
 	<c:if test="${username == 'admin'}">
 		<center>
-			<a href="${pageContext.request.contextPath}/poiExcle/jump"><font color="blue">查看所有用户信息</font></a>
+			<a href="${pageContext.request.contextPath}/poiExcel/jump"><font color="blue">查看所有用户信息</font></a>
 		</center>
 	</c:if>
 
