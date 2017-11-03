@@ -89,6 +89,16 @@ div {
 //		document.getElementByIdx("button1").disabled=true;
 	});
 	
+	// 按回车键登陆
+	//只有当登陆的时候登录框是input button是才生效
+	//当登录框是input submit时不生效
+// 	$(document).keyup(function(event){
+// 		  if(event.keyCode ==13){
+// 		  	submitCheck();
+// 		  }
+// 		});
+
+	
 	function aa() {
 		var username = $("#username").val().replace(/(^\s*)|(\s*$)/g, '');//去空格
 		var password = $("#password").val().replace(/(^\s*)|(\s*$)/g, '');
