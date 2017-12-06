@@ -1,25 +1,16 @@
 package com.sh.pri.controller;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.io.*;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @RequestMapping("/down")
 @Controller
@@ -68,6 +59,7 @@ public class DownLoadPicture {
 			List<String> aHref = cm.getAHref(aUrl);
 			// 真正要下载的图片地址集合(子页面)
 			List<String> finalList = new ArrayList<String>();
+			List<String> list = new ArrayList<String>();
 			for (String href : aHref) {
 				// 进入a标签的src路径 ，拿到子页面的html
 				String html2 = cm.getHtml(href);
@@ -85,6 +77,18 @@ public class DownLoadPicture {
 				List<String> imageSrcList = cm.getImageSrc(imageUrlList);
 				//创建最终的下载地址集合
 				finalList = cm.removeImageSrc(imageSrcList);
+				for (Iterator<String> it = finalList.iterator(); it.hasNext() ; ) {
+					String url = it.next();
+					if (!url.startsWith("http")){
+						it.remove();
+					}
+				}
+				//只下载960x600分辨率的
+				for (int i = 0; i < finalList.size(); i++) {
+					if (finalList.get(i).indexOf("960x600") != -1){
+						list.add(finalList.get(i).replace("960x600","1366x768"));
+					}
+				}
 //				List<String> downLoadHrefList1 = new ArrayList<String>();
 				// 获取子页面的img标签
 //				List<String> imgUrl1 = cm.getImageUrl(html2);
@@ -97,9 +101,10 @@ public class DownLoadPicture {
 				// 把第一个url放到list集合中，遍历这个集合进行下载
 //				srcList.add(url);
 			}
-			if (finalList != null && finalList.size() > 0) {
+			log.info("最终的图片下载地址集合是:============"+list.toString());
+			if (list != null && list.size() > 0) {
 				//根据集合中的地址  下载图片
-				cm.Download(finalList);
+				cm.Download(list);
 			}
 		} catch (Exception e) {
 			System.out.println("发生错误");
@@ -139,7 +144,7 @@ public class DownLoadPicture {
 		while (matcher.find()) {
 			listimgurl.add(matcher.group());
 		}
-		log.info("图片地址list集合  :" + listimgurl);
+//		log.info("图片地址list集合  :" + listimgurl);
 		return listimgurl;
 	}
 
@@ -155,7 +160,7 @@ public class DownLoadPicture {
 						matcher.group().length() - 1));
 			}
 		}
-		log.info("图片的下载地址集合 : " + listImageSrc);
+//		log.info("图片的下载地址集合 : " + listImageSrc);
 		return listImageSrc;
 	}
 	
@@ -170,7 +175,7 @@ public class DownLoadPicture {
 		    	imageSrcList.remove(x);
 			}
 		}
-		log.info("图片的下载地址集合 : " + imageSrcList);
+//		log.info("图片的下载地址集合 : " + imageSrcList);
 		return imageSrcList;
 	}
 
@@ -182,7 +187,7 @@ public class DownLoadPicture {
 		while (matcher.find()) {
 			listAurl.add(matcher.group());
 		}
-		log.info("图片地址list集合  :" + listAurl);
+//		log.info("图片地址list集合  :" + listAurl);
 		return listAurl;
 	}
 
@@ -194,12 +199,14 @@ public class DownLoadPicture {
 			String href1 = href.replace(" ", "");
 			Matcher matcher = Pattern.compile(AHREF_REG).matcher(href1);// 正则匹配出有用的a标签的href
 			while (matcher.find()) {// 如果能匹配到就 对匹配到的字符串进行截取 取出我们需要的图片地址
-				listAHref.add(URL1
-						+ matcher.group().substring(6,
-								matcher.group().length() - 1));
+				if ( !matcher.group().substring(6,matcher.group().length() - 1).startsWith("http")){
+					listAHref.add(URL1
+							+ matcher.group().substring(6,
+							matcher.group().length() - 1));
+				}
 			}
 		}
-		log.info("图片的跳转地址集合 : " + listAHref);
+//		log.info("图片的跳转地址集合 : " + listAHref);
 		return listAHref;
 	}
 
@@ -217,7 +224,7 @@ public class DownLoadPicture {
 		}
 		//去除重复的url
 		List<String> removeDuplicate = DownLoadPicture.removeDuplicate(listAHref);
-		log.info("图片的下载地址集合 : " + listAHref);
+//		log.info("图片的下载地址集合 : " + listAHref);
 		return removeDuplicate;
 	}
 	
@@ -235,6 +242,7 @@ public class DownLoadPicture {
 			// 抓取图片开始时间
 			Date begindate = new Date();
 			OutputStream os = null;// 定义一个输出流
+			Long count = 0L;
 			for (String url : listImgSrc) {
 				// 判断src里的地址不是以图片格式结尾的话 就跳过
 				if (!(url.toLowerCase().endsWith(".jpg") || url.toLowerCase()
@@ -265,13 +273,14 @@ public class DownLoadPicture {
 				Date overdate = new Date();
 				double time = overdate.getTime() - begindate2.getTime();
 				System.out.println("------>单张下载耗时：" + time / 1000 + "秒");
+				count ++;
 			}
 			if (os != null) {
 				os.close();
 			}
 			Date endDate = new Date();
 			double sumTime = endDate.getTime() - begindate.getTime();
-			System.out.println("完成。。。。。。。。。。。。。。。。");
+			System.out.println("下载完成。。。。。。。。。。。。。。。。共下载"+count+"张图片");
 			System.out.println(">>>>>>>>>>>>>>>>>>>>>抓取所以资源共耗时  :" + sumTime
 					/ 1000 + "秒");
 		} catch (Exception e) {
