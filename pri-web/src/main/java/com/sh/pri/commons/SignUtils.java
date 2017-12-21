@@ -29,9 +29,9 @@ public class SignUtils {
 
     public static void main(String[] args) {
         Map<String,Object> signMap = new HashMap<String, Object>();
-        signMap.put("a", "A002");
-        signMap.put("b", "PC");
-        signMap.put("c", "uleClearing");
+        signMap.put("a", "1");
+        signMap.put("b", "2");
+        signMap.put("c", "3");
         String sign = sign(signMap, "45130f2ed3ee2a08194c0a955ae76b01");
         System.out.println(sign);
     }
