@@ -45,6 +45,13 @@
 		SELECT *
 		FROM t_user_info WHERE
 		username = #{userName} and status = 0
+		<!--<if test="uuid != null and uuid != ''">
+			AND  uuid = #{uuid}
+		</if>
+		<if test="createTime != null">
+			AND  create_time = STR_TO_DATE(#{createTime,jdbcType=TIMESTAMP},"%Y-%m-%d %T")格式化时间参数  转成年月日时分秒的格式
+		</if>
+		ORDER BY create_time DESC -->
 	</select>
 
 	<insert id="addUser" parameterType="com.sh.pri.pojo.TUserInfo">
