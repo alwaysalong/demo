@@ -115,8 +115,8 @@
 //			log.info("AccountAndPostNoMapDaoImpl.queryAccountOrderList method invoke end........");
 //			return resultMap;
 //		} catch (Exception e) {
-//			log.error("查询账户充值订单列表异常", e);
-//			throw new WalletException(e.getMessage());
+//			log.error("查询异常", e);
+//			throw new PriException(e.getMessage());
 //		}
 //	}
 //}
