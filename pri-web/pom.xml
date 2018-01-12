@@ -84,6 +84,11 @@
 
 		<!-- 格式化对象，方便输出日志 -->
 		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+	<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
 		</dependency>
@@ -112,7 +117,6 @@
 		<dependency>
 			<groupId>commons-codec</groupId>
 			<artifactId>commons-codec</artifactId>
-			<version>1.6</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-io</groupId>
@@ -139,8 +143,8 @@
 
 
 
-		<!-- 运行后，ajax可以访问controller方法，但是返回的json数据后，ajax的success接收不到，提示的错误是： java.lang.IllegalArgumentException: 
-			No converter found for return value of type: class java.util.HashMap 从错误信息的原因来看，是后台返回的json数据与ajax的dataType:”json” 
+		<!-- 运行后，ajax可以访问controller方法，但是返回的json数据后，ajax的success接收不到，提示的错误是： java.lang.IllegalArgumentException:
+			No converter found for return value of type: class java.util.HashMap 从错误信息的原因来看，是后台返回的json数据与ajax的dataType:”json”
 			不匹配 -->
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>

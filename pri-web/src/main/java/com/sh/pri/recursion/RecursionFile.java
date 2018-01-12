@@ -1,5 +1,9 @@
 package com.sh.pri.recursion;
 
+
+
+import org.apache.log4j.Logger;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,9 +14,17 @@ import java.util.List;
  * Created by admin on 2018/1/12.
  */
 public class RecursionFile {
+
+
     //改路径文件夹下所有的文件的绝对路径的集合
     private static List<String> fileList = new ArrayList<String>();
     public static void main(String[] args) {
+        final Logger logger = Logger.getLogger("TestErrOut");
+        logger.debug(" This is debug!!!");
+        logger.info(" This is info!!!");
+        logger.warn(" This is warn!!!");
+        logger.error(" This is error!!!");
+        logger.fatal(" This is fatal!!!");
         String path = "D:\\工具";
         getAllFile(path);
         System.out.println("");
