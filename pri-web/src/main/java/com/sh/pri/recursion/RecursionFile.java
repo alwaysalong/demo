@@ -24,7 +24,11 @@ public class RecursionFile {
         String bigestFile = getBigestFile(fileList);
         System.out.println("最大文件:" + bigestFile + ",大小:" + new File(bigestFile).length()/1024 +"kb");
     }
-    //获取所有的文件
+
+    /**
+     * 获取所有文件
+     * @param path
+     */
     private  static  void getAllFile(String path){
         File files = new File(path);
         //判断该路径下的文件是否存在
