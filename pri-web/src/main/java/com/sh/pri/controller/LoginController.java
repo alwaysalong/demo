@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -52,6 +53,12 @@ public class LoginController {
 			} else {
 				request.getSession().setAttribute("userId", result.get("id"));
 				request.getSession().setAttribute("userName", userName);
+				Cookie cookie = new Cookie("name", userName);
+				cookie.setPath("/");
+				//过期时间60s
+				cookie.setMaxAge(1*60);
+//				cookie.setDomain("");//cookie的作用域
+				response.addCookie(cookie);//添加cookie
 				request.getRequestDispatcher("/WEB-INF/jsp/welcome.jsp")
 						.forward(request, response);
 				return;

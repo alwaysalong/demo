@@ -24,7 +24,7 @@ public class LoginServiceImpl implements ILoginService {
 	
 	private Map<String, Object> map = new HashMap<String, Object>();
 	
-	public Map<String, Object> loginIn(String userName, String passWord) {
+	public Map<String, Object> 	loginIn(String userName, String passWord) {
 		
 		/*if (null == userName || "".equals(userName) || null == passWord
 				|| "".equals(passWord)) {
