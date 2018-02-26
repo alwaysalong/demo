@@ -1,0 +1,240 @@
+
+<HTML>
+
+<HEAD>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <TITLE>
+        斜线表头
+    </TITLE>
+    <style type="text/css">
+        td {
+            text-align:center; /*设置水平居中*/
+            vertical-align:middle;/*设置垂直居中*/
+        }
+        .abc {margin:0 auto;width:720px; solid;text-align:left;}
+    </style>
+</HEAD>
+<script Language="javascript">
+    function a(x, y, color) {
+        document.write("<img   border='0'   style='position:   absolute;   left:   " + (x) + ";   top:   " + (y) + ";background-color:   " + color + "'   src='px.gif'   width=1   height=1>")
+    }
+</script>
+
+<body leftmargin=0 topmargin=0>
+<div style="text-align:center" class="abc">
+
+<h3>《工银安盛人寿珍爱e生特定疾病海外医疗保险》</h3>
+<h3>费率表</h3>
+
+    <p align="left" >一、首次投保费率</p>
+    <p align="right">单位：人民币元</p>
+
+<TABLE border=0 bgcolor="000000" cellspacing="1" width="100%" style="width: 100%;margin:auto">
+    <TR bgcolor="FFFFFF">
+        <TD width="111" height="52">
+            <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td id="td1">
+                    </td>
+                    <td>
+                        基本保险金额
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        投保年龄（周岁）
+                    </td>
+                    <td id="td2">
+                    </td>
+                </tr>
+            </table>
+        </TD>
+        <TD width="81">
+            600万
+        </TD>
+    </TR>
+    <TR bgcolor="FFFFFF">
+        <TD>
+            0-17
+        </TD>
+        <TD>
+            418
+        </TD>
+    </TR>
+</TABLE>
+<br>
+    <p align="left" >二、续保费率</p>
+    <p align="right">单位：人民币元</p>
+<TABLE border=0 bgcolor="000000" cellspacing="1" width="50%" style="width: 100%;margin:auto">
+    <TR bgcolor="FFFFFF">
+        <TD width="111" height="52">
+            <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td id="td11">
+                    </td>
+                    <td>
+                        基本保险金额
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        投保年龄（周岁）
+                    </td>
+                    <td id="td22">
+                    </td>
+                </tr>
+            </table>
+        </TD>
+        <TD width="81">
+            600万
+        </TD>
+    </TR>
+    <TR bgcolor="FFFFFF">
+        <TD>
+            0-17
+        </TD>
+        <TD>
+            418
+        </TD>
+    </TR>
+
+    <TR bgcolor="FFFFFF">
+        <TD>
+            18-25
+        </TD>
+        <TD>
+            640
+        </TD>
+    </TR> <TR bgcolor="FFFFFF">
+    <TD>
+        26-30
+    </TD>
+    <TD>
+        960
+    </TD>
+</TR> <TR bgcolor="FFFFFF">
+    <TD>
+        31-35
+    </TD>
+    <TD>
+        1520
+    </TD>
+</TR> <TR bgcolor="FFFFFF">
+    <TD>
+        36-40
+    </TD>
+    <TD>
+        2160
+    </TD>
+</TR> <TR bgcolor="FFFFFF">
+    <TD>
+        41-45
+    </TD>
+    <TD>
+        2720
+    </TD>
+</TR> <TR bgcolor="FFFFFF">
+    <TD>
+        46-50
+    </TD>
+    <TD>
+        3075
+    </TD>
+</TR> <TR bgcolor="FFFFFF">
+    <TD>
+        51-55
+    </TD>
+    <TD>
+        3225
+    </TD>
+</TR> <TR bgcolor="FFFFFF">
+    <TD>
+        56-60
+    </TD>
+    <TD>
+        3525
+    </TD>
+</TR> <TR bgcolor="FFFFFF">
+    <TD>
+        61-65
+    </TD>
+    <TD>
+        3675
+    </TD>
+</TR> <TR bgcolor="FFFFFF">
+    <TD>
+        66-70
+    </TD>
+    <TD>
+        3750
+    </TD>
+</TR> <TR bgcolor="FFFFFF">
+    <TD>
+        71-75
+    </TD>
+    <TD>
+        3825
+    </TD>
+</TR> <TR bgcolor="FFFFFF">
+    <TD>
+        76-80
+    </TD>
+    <TD>
+        3900
+    </TD>
+</TR> <TR bgcolor="FFFFFF">
+    <TD>
+        81-85
+    </TD>
+    <TD>
+        3975
+    </TD>
+</TR>
+</TABLE>
+</div>
+<script>
+    function getTop(tdobj) {
+        vParent = tdobj.offsetParent;
+        t = tdobj.offsetTop;
+        while (vParent.tagName.toUpperCase() != "BODY") {
+            t += vParent.offsetTop;
+            vParent = vParent.offsetParent;
+        }
+        return t;
+    }
+
+    function getLeft(tdobj) {
+        vParent = tdobj.offsetParent;
+        t = tdobj.offsetLeft;
+        while (vParent.tagName.toUpperCase() != "BODY") {
+            t += vParent.offsetLeft;
+            vParent = vParent.offsetParent;
+        }
+        return t;
+    }
+    function line(x1, y1, x2, y2, color) {
+        var tmp
+        if (x1 >= x2) {
+            tmp = x1;
+            x1 = x2;
+            x2 = tmp;
+            tmp = y1;
+            y1 = y2;
+            y2 = tmp;
+        }
+        for (var i = x1; i <= x2; i++) {
+            x = i;
+            y = (y2 - y1) / (x2 - x1) * (x - x1) + y1;
+            a(x, y, color);
+        }
+    }
+    //line(1,1,100,100,"000000");
+    line(getLeft(td1), getTop(td1), getLeft(td1) + td1.offsetWidth, getTop(td1) + td1.offsetHeight, '#000000');
+    line(getLeft(td2), getTop(td2), getLeft(td2) + td2.offsetWidth, getTop(td2) + td2.offsetHeight, '#000000');
+
+    line(getLeft(td11), getTop(td11), getLeft(td11) + td11.offsetWidth, getTop(td11) + td11.offsetHeight, '#000000');
+    line(getLeft(td22), getTop(td22), getLeft(td22) + td22.offsetWidth, getTop(td22) + td22.offsetHeight, '#000000');
+</script>
+</BODY>
+
+</HTML>
