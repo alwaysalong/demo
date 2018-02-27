@@ -48,7 +48,9 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<!-- 拦截所有url中包括/user/的请求 -->
-			<mvc:mapping path="/user/**" />
+			<!--<mvc:mapping path="/user/**" />-->
+			<!--拦截所有请求-->
+			<mvc:mapping path="/**" />
 			<bean class="com.sh.pri.interceptor.LoginInterceptor"></bean>
 		</mvc:interceptor>
 	
