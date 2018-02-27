@@ -9,6 +9,6 @@ public class MainController {
 	
 	@RequestMapping("/main")
 	public String enter(){
-		return "redirect:/login.jsp";
+		return "main";
 	}
 }

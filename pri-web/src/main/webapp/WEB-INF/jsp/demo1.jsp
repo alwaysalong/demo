@@ -27,7 +27,7 @@ pageEncoding="UTF-8"%>
     <li><a href="#">基础信息管理</a></li>
     <li><a href="#">统计系统查询</a></li>
 </ul>
-<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../../js/jquery-1.8.3.min.js"></script>
 <script>
     var $j = jQuery.noConflict();
     $j(function(){
@@ -48,6 +48,6 @@ pageEncoding="UTF-8"%>
         }
     });
 </script>
-<script src="js/jquery-1.8.3.min.js"></script>
+<script src="../../js/jquery-1.8.3.min.js"></script>
 </body>
 </html>

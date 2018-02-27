@@ -1,12 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=GBK">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>jquery插件实现软件后台管理界面</title>
-    <link rel="stylesheet" type="text/css" href="css/easyUI/easyui.css">
-    <link rel="stylesheet" type="text/css" href="css/easyUI/icon.css">
-    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
-    <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../css/easyUI/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../css/easyUI/icon.css">
+    <script type="text/javascript" src="../../js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="../../js/jquery.easyui.min.js"></script>
     <style type="text/css">
         body {
             font: 12px/20px "微软雅黑", "宋体", Arial, sans-serif, Verdana, Tahoma;
@@ -210,60 +214,60 @@
 <div region="west" border="true" split="true" title="Navigation" class="cs-west">
     <div class="easyui-accordion" fit="true" border="false">
         <div title="Base">
-            <a href="javascript:void(0);" src="demo/easyloader.html" class="cs-navi-tab">easyloader</a></p>
-            <a href="javascript:void(0);" src="demo/draggable.html" class="cs-navi-tab">draggable</a></p>
-            <a href="javascript:void(0);" src="demo/droppable.html" class="cs-navi-tab">droppable</a></p>
-            <a href="javascript:void(0);" src="demo/droppable1.html" class="cs-navi-tab">droppable1</a></p>
-            <a href="javascript:void(0);" src="demo/droppable2.html" class="cs-navi-tab">droppable2</a></p>
-            <a href="javascript:void(0);" src="demo/resizable.html" class="cs-navi-tab">resizable</a></p>
-            <a href="javascript:void(0);" src="demo/pagination.html" class="cs-navi-tab">pagination</a></p>
-            <a href="javascript:void(0);" src="demo/searchbox.html" class="cs-navi-tab">searchbox</a></p>
-            <a href="javascript:void(0);" src="demo/progressbar.html" class="cs-navi-tab">progressbar</a></p>
+            <p><a href="javascript:void(0);" src="${pageContext.request.contextPath}/main" class="cs-navi-tab">easyloader</a></p>
+            <p><a href="javascript:void(0);" src="demo/draggable.html" class="cs-navi-tab">draggable</a></p>
+            <p><a href="javascript:void(0);" src="demo/droppable.html" class="cs-navi-tab">droppable</a></p>
+            <p><a href="javascript:void(0);" src="demo/droppable1.html" class="cs-navi-tab">droppable1</a></p>
+            <p><a href="javascript:void(0);" src="demo/droppable2.html" class="cs-navi-tab">droppable2</a></p>
+            <p><a href="javascript:void(0);" src="demo/resizable.html" class="cs-navi-tab">resizable</a></p>
+            <p><a href="javascript:void(0);" src="demo/pagination.html" class="cs-navi-tab">pagination</a></p>
+            <p><a href="javascript:void(0);" src="demo/searchbox.html" class="cs-navi-tab">searchbox</a></p>
+            <p><a href="javascript:void(0);" src="demo/progressbar.html" class="cs-navi-tab">progressbar</a></p>
         </div>
         <div title="Layout">
-            <a href="javascript:void(0);" src="demo/accordion.html" class="cs-navi-tab">accordion</a></p>
-            <a href="javascript:void(0);" src="demo/layout.html" class="cs-navi-tab">layout</a></p>
-            <a href="javascript:void(0);" src="demo/layout1.html" class="cs-navi-tab">layout1</a></p>
-            <a href="javascript:void(0);" src="demo/layout2.html" class="cs-navi-tab">layout2</a></p>
-            <a href="javascript:void(0);" src="demo/panel.html" class="cs-navi-tab">panel</a></p>
-            <a href="javascript:void(0);" src="demo/panel2.html" class="cs-navi-tab">panel1</a></p>
-            <a href="javascript:void(0);" src="demo/tabs.html" class="cs-navi-tab">tabs</a></p>
+            <p><a href="javascript:void(0);" src="demo/accordion.html" class="cs-navi-tab">accordion</a></p>
+            <p><a href="javascript:void(0);" src="demo/layout.html" class="cs-navi-tab">layout</a></p>
+            <p><a href="javascript:void(0);" src="demo/layout1.html" class="cs-navi-tab">layout1</a></p>
+            <p><a href="javascript:void(0);" src="demo/layout2.html" class="cs-navi-tab">layout2</a></p>
+            <p><a href="javascript:void(0);" src="demo/panel.html" class="cs-navi-tab">panel</a></p>
+            <p><a href="javascript:void(0);" src="demo/panel2.html" class="cs-navi-tab">panel1</a></p>
+            <p><a href="javascript:void(0);" src="demo/tabs.html" class="cs-navi-tab">tabs</a></p>
         </div>
         <div title="Menu and Button">
-            <a href="javascript:void(0);" src="demo/menu.html" class="cs-navi-tab">menu</a></p>
-            <a href="javascript:void(0);" src="demo/menubutton.html" class="cs-navi-tab">menubutton</a></p>
-            <a href="javascript:void(0);" src="demo/linkbutton.html" class="cs-navi-tab">linkbutton</a></p>
-            <a href="javascript:void(0);" src="demo/splitbutton.html" class="cs-navi-tab">splitbutton</a></p>
+            <p><a href="javascript:void(0);" src="demo/menu.html" class="cs-navi-tab">menu</a></p>
+            <p><a href="javascript:void(0);" src="demo/menubutton.html" class="cs-navi-tab">menubutton</a></p>
+            <p><a href="javascript:void(0);" src="demo/linkbutton.html" class="cs-navi-tab">linkbutton</a></p>
+            <p><a href="javascript:void(0);" src="demo/splitbutton.html" class="cs-navi-tab">splitbutton</a></p>
         </div>
         <div title="Form">
-            <a href="javascript:void(0);" src="demo/form.html" class="cs-navi-tab">form</a></p>
-            <a href="javascript:void(0);" src="demo/validatebox.html" class="cs-navi-tab">validatebox</a></p>
-            <a href="javascript:void(0);" src="demo/combo.html" class="cs-navi-tab">combo</a></p>
-            <a href="javascript:void(0);" src="demo/combobox.html" class="cs-navi-tab">combobox</a></p>
-            <a href="javascript:void(0);" src="demo/combotree.html" class="cs-navi-tab">combotree</a></p>
-            <a href="javascript:void(0);" src="demo/combogrid.html" class="cs-navi-tab">combogrid</a></p>
-            <a href="javascript:void(0);" src="demo/numberbox.html" class="cs-navi-tab">numberbox</a></p>
-            <a href="javascript:void(0);" src="demo/numberbox2.html" class="cs-navi-tab">numberbox1</a></p>
-            <a href="javascript:void(0);" src="demo/datebox.html" class="cs-navi-tab">datebox</a></p>
-            <a href="javascript:void(0);" src="demo/datetimebox.html" class="cs-navi-tab">datetimebox</a></p>
-            <a href="javascript:void(0);" src="demo/calendar.html" class="cs-navi-tab">calendar</a></p>
-            <a href="javascript:void(0);" src="demo/timespinner.html" class="cs-navi-tab">timespinner</a></p>
-            <a href="javascript:void(0);" src="demo/numberspinner.html" class="cs-navi-tab">numberspinner</a></p>
-            <a href="javascript:void(0);" src="demo/slider.html" class="cs-navi-tab">slider</a></p>
+            <p><a href="javascript:void(0);" src="demo/form.html" class="cs-navi-tab">form</a></p>
+            <p><a href="javascript:void(0);" src="demo/validatebox.html" class="cs-navi-tab">validatebox</a></p>
+            <p><a href="javascript:void(0);" src="demo/combo.html" class="cs-navi-tab">combo</a></p>
+            <p><a href="javascript:void(0);" src="demo/combobox.html" class="cs-navi-tab">combobox</a></p>
+            <p><a href="javascript:void(0);" src="demo/combotree.html" class="cs-navi-tab">combotree</a></p>
+            <p><a href="javascript:void(0);" src="demo/combogrid.html" class="cs-navi-tab">combogrid</a></p>
+            <p><a href="javascript:void(0);" src="demo/numberbox.html" class="cs-navi-tab">numberbox</a></p>
+            <p><a href="javascript:void(0);" src="demo/numberbox2.html" class="cs-navi-tab">numberbox1</a></p>
+            <p><a href="javascript:void(0);" src="demo/datebox.html" class="cs-navi-tab">datebox</a></p>
+            <p><a href="javascript:void(0);" src="demo/datetimebox.html" class="cs-navi-tab">datetimebox</a></p>
+            <p><a href="javascript:void(0);" src="demo/calendar.html" class="cs-navi-tab">calendar</a></p>
+            <p><a href="javascript:void(0);" src="demo/timespinner.html" class="cs-navi-tab">timespinner</a></p>
+            <p><a href="javascript:void(0);" src="demo/numberspinner.html" class="cs-navi-tab">numberspinner</a></p>
+            <p><a href="javascript:void(0);" src="demo/slider.html" class="cs-navi-tab">slider</a></p>
         </div>
         <div title="Window">
-            <a href="javascript:void(0);" src="demo/window.html" class="cs-navi-tab">window</a></p>
-            <a href="javascript:void(0);" src="demo/dialog.html" class="cs-navi-tab">dialog</a></p>
-            <a href="javascript:void(0);" src="demo/messager.html" class="cs-navi-tab">messager</a></p>
+            <p><a href="javascript:void(0);" src="demo/window.html" class="cs-navi-tab">window</a></p>
+            <p><a href="javascript:void(0);" src="demo/dialog.html" class="cs-navi-tab">dialog</a></p>
+            <p><a href="javascript:void(0);" src="demo/messager.html" class="cs-navi-tab">messager</a></p>
         </div>
         <div title="DataGrid and Tree">
-            <a href="javascript:void(0);" src="demo/datagrid.html" class="cs-navi-tab">datagrid</a></p>
-            <a href="javascript:void(0);" src="demo/propertygrid.html" class="cs-navi-tab">propertygrid</a></p>
-            <a href="javascript:void(0);" src="demo/tree.html" class="cs-navi-tab">tree</a></p>
-            <a href="javascript:void(0);" src="demo/tree2.html" class="cs-navi-tab">tree1</a></p>
-            <a href="javascript:void(0);" src="demo/treegrid.html" class="cs-navi-tab">treegrid</a></p>
-            <a href="javascript:void(0);" src="demo/treegrid2.html" class="cs-navi-tab">treegrid1</a></p>
-            <a href="javascript:void(0);" src="demo/treegrid3.html" class="cs-navi-tab">treegrid2</a></p>
+            <p><a href="javascript:void(0);" src="demo/datagrid.html" class="cs-navi-tab">datagrid</a></p>
+            <p><a href="javascript:void(0);" src="demo/propertygrid.html" class="cs-navi-tab">propertygrid</a></p>
+            <p><a href="javascript:void(0);" src="demo/tree.html" class="cs-navi-tab">tree</a></p>
+            <p><a href="javascript:void(0);" src="demo/tree2.html" class="cs-navi-tab">tree1</a></p>
+            <p><a href="javascript:void(0);" src="demo/treegrid.html" class="cs-navi-tab">treegrid</a></p>
+            <p><a href="javascript:void(0);" src="demo/treegrid2.html" class="cs-navi-tab">treegrid1</a></p>
+            <p><a href="javascript:void(0);" src="demo/treegrid3.html" class="cs-navi-tab">treegrid2</a></p>
         </div>
     </div>
 </div>
@@ -278,7 +282,7 @@
     </div>
 </div>
 
-<div region="south" border="false" class="cs-south">代码整理：懒人之家</div>
+<div region="south" border="false" class="cs-south">xxxxxxx</div>
 
 <div id="mm" class="easyui-menu cs-tab-menu">
     <div id="mm-tabupdate">刷新</div>

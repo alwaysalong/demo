@@ -14,7 +14,7 @@
 	intervalid = setInterval("fun()", 1000);
 	function fun() {
 		if (i == 0) {
-			window.location.href = "../../login.jsp";
+			window.location.href = "login.jsp";
 			clearInterval(intervalid);
 		}
 		document.getElementById("mes").innerHTML = i;
