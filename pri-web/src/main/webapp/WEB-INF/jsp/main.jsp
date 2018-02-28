@@ -6,7 +6,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>jquery插件实现软件后台管理界面</title>
+    <title>Private management space</title>
     <link rel="stylesheet" type="text/css" href="../../css/easyUI/easyui.css">
     <link rel="stylesheet" type="text/css" href="../../css/easyUI/icon.css">
     <script type="text/javascript" src="../../js/jquery-1.8.3.min.js"></script>
@@ -208,15 +208,16 @@
 <span style="display:none;">
 <script src="http://s94.cnzz.com/stat.php?id=4106941&web_id=4106941" language="JavaScript"></script>
 </span><body class="easyui-layout">
-<div region="north" border="true" class="cs-north">
-    <div class="cs-north-bg"><div class="cs-north-logo">Private management space</div></div>
+<div region="north" border="true" class="cs-north" >
+    <div class="cs-north-bg"><div><font size="5" color="blue">Private management space</font><p align="right" style="font-size:16px;">欢迎您: <font color="blue">${sessionScope.userName}</font>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/login/logout"><font color="red">[退出]</font></a></p></div></div>
+    <%--<div class="cs-north-bg"><div class="cs-north-logo">Private management space</div></div>--%>
 </div>
 <div region="west" border="true" split="true" title="Navigation" class="cs-west">
     <div class="easyui-accordion" fit="true" border="false">
         <div title="Base">
-            <p><a href="javascript:void(0);" src="${pageContext.request.contextPath}/main" class="cs-navi-tab">easyloader</a></p>
-            <p><a href="javascript:void(0);" src="demo/draggable.html" class="cs-navi-tab">draggable</a></p>
-            <p><a href="javascript:void(0);" src="demo/droppable.html" class="cs-navi-tab">droppable</a></p>
+            <p><a href="javascript:void(0);" src="${pageContext.request.contextPath}/poiExcel/jump" class="cs-navi-tab">信息上传下载</a></p>
+            <p><a href="javascript:void(0);" src="${pageContext.request.contextPath}/test/getTr" class="cs-navi-tab">获取td元素</a></p>
+            <p><a href="javascript:void(0);" src="${pageContext.request.contextPath}/pageHelper/userList" class="cs-navi-tab">会员信息</a></p>
             <p><a href="javascript:void(0);" src="demo/droppable1.html" class="cs-navi-tab">droppable1</a></p>
             <p><a href="javascript:void(0);" src="demo/droppable2.html" class="cs-navi-tab">droppable2</a></p>
             <p><a href="javascript:void(0);" src="demo/resizable.html" class="cs-navi-tab">resizable</a></p>
@@ -282,7 +283,7 @@
     </div>
 </div>
 
-<div region="south" border="false" class="cs-south">xxxxxxx</div>
+<div region="south" border="false" class="cs-south">Private management space</div>
 
 <div id="mm" class="easyui-menu cs-tab-menu">
     <div id="mm-tabupdate">刷新</div>

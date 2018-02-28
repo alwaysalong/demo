@@ -91,7 +91,7 @@ body {
 		});
 	});
 </script>
-<script type="text/javascript" src="/js/checkCode.js">
+<script type="text/javascript" src="../../js/checkCode.js">
 	
 </script>
 </head>
@@ -115,7 +115,7 @@ body {
 			<div>
 				<label>性别:</label>&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio"
 					id="sex" name="sex" checked="checked" value="1" />男&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="radio" id="sex" name="sex" value="2" />女&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" id="sex1" name="sex" value="2" />女&nbsp;&nbsp;&nbsp;&nbsp;
 			</div>
 			<div>
 				<label>邮箱：</label> <input type="text" name="email" id="email"
