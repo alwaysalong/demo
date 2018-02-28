@@ -41,7 +41,7 @@ public class PoiExcelController {
 	
 	@RequestMapping("/jump")
 	public String downLoadUserInfo(HttpServletRequest request){
-		request.getSession().invalidate();
+//		request.getSession().invalidate();
 		return "poiExcel";
 	}
 	

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,45 +31,49 @@ public class LoginController {
 	private ILoginService loginService;
 
 	@RequestMapping(value = "/loginIn", method = RequestMethod.POST)
-	public void loglinIn(HttpServletRequest request,
+	public String loglinIn(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		Map<String, Object> result = new HashMap<String, Object>();
+		HttpSession session = request.getSession();
 		String userName = request.getParameter("username");
 		String passWord = request.getParameter("password");
 		if (null == userName || "".equals(userName) || null == passWord
 				|| "".equals(passWord)) {
 			log.error("LoginController . loglinIn 的参数不能为空! ");
-			request.getSession().setAttribute("error", "请输入正确的账号密码!");
-			request.getRequestDispatcher("/login.jsp").forward(request,
+			session.setAttribute("error", "请输入正确的账号密码!");
+			request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request,
 					response);
-			request.getSession().invalidate();
-			return;
+			session.invalidate();
+			return null;
 		}
 		try {
 			result = loginService.loginIn(userName, passWord);
 			if (result.get("code").equals(ConstantsClass.REQUEST_FAIL)) {
-				request.getSession().setAttribute("error", "用户名或密码错误!");
+				session.setAttribute("error", "用户名或密码错误!");
 				response.sendRedirect("/login.jsp");
-				request.getSession().setMaxInactiveInterval(1);
-			} else {
-				request.getSession().setAttribute("userId", result.get("id"));
-				request.getSession().setAttribute("userName", userName);
+//				session.setMaxInactiveInterval(1);
+				return "login";
+			} else {				session.setAttribute("userId", result.get("id"));
+				session.setAttribute("userName", userName);
+				session.setMaxInactiveInterval(5*60);
 				Cookie cookie = new Cookie("name", userName);
 				cookie.setPath("/");
 				//过期时间60s
-				cookie.setMaxAge(1*60);
+				cookie.setMaxAge(5*60);
 //				cookie.setDomain("");//cookie的作用域
 				response.addCookie(cookie);//添加cookie
-				request.getRequestDispatcher("/WEB-INF/jsp/welcome.jsp")
-						.forward(request, response);
-				return;
+//				request.getRequestDispatcher("/WEB-INF/jsp/welcome.jsp")
+//						.forward(request, response);
+				return "main";
 			}
 		} catch (Exception e) {
 			log.info("LoginController.loginIn  exception : " + e);
 			log.info(e.getMessage(), e);
-			response.sendRedirect("/error.jsp");
-			return;
+//			response.sendRedirect("/error.jsp");
+//			return null;
+			return "error";
 		}
+//		return null;
 	}
 
 	@RequestMapping("/logout")

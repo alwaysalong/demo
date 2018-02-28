@@ -33,7 +33,7 @@ public class RegisterController {
 			if (userInfo == null || userInfo.equals("")) {
 				log.error("RegisterController . addUser   的参数不能为空!!");
 				request.getSession().setAttribute("error", "请填写完整信息!");
-				request.getRequestDispatcher("/register.jsp").forward(request,
+				request.getRequestDispatcher("/WEB-INF/jsp/register.jsp").forward(request,
 						response);
 				request.getSession().invalidate();
 				return;
@@ -44,7 +44,7 @@ public class RegisterController {
 					|| StringUtils.isBlank(userInfo.getMobile())) {
 				log.error("RegisterController . addUser   的参数不完整!!");
 				request.getSession().setAttribute("error", "请填写完整信息!");
-				request.getRequestDispatcher("/register.jsp").forward(request,
+				request.getRequestDispatcher("/WEB-INF/jsp/register.jsp").forward(request,
 						response);
 				request.getSession().invalidate();
 				return;
@@ -71,7 +71,7 @@ public class RegisterController {
 				} else {
 					log.info("---------添加用户失败!----------");
 					request.getSession().setAttribute("error", "注册用户失败,请重新注册!");
-					request.getRequestDispatcher("/register.jsp").forward(
+					request.getRequestDispatcher("/WEB-INF/jsp/register.jsp").forward(
 							request, response);
 					request.getSession().invalidate();
 					return;
@@ -80,7 +80,7 @@ public class RegisterController {
 				log.info("---------用户名已存在!----------");
 				request.getSession().setAttribute("userInfo", userInfo);
 				request.getSession().setAttribute("error", "用户名已存在,请重新注册!");
-				request.getRequestDispatcher("/register.jsp").forward(request,
+				request.getRequestDispatcher("/WEB-INF/jsp/register.jsp").forward(request,
 						response);
 				request.getSession().invalidate();
 				return;
@@ -90,5 +90,24 @@ public class RegisterController {
 			log.info(e.getMessage(), e);
 			response.sendRedirect("/error.jsp");
 		}
+	}
+
+	/**
+	 * 跳转到注册页面
+	 * @return
+	 */
+	@RequestMapping("/toRegister")
+	public String toRegister(){
+		return "register";
+	}
+
+	/**
+	 * 跳转到重置密码页面
+	 * @return
+	 */
+	@RequestMapping("/resetPWD")
+	public String toResetPWD(){
+
+		return "resetPWD";
 	}
 }
