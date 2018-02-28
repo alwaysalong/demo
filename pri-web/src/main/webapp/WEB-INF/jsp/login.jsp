@@ -70,7 +70,7 @@ div {
     background: -ms-linear-gradient(top, #8DC9EF, #4E9FD1);
 }
 </style>
-<script type="text/javascript" src="/js/checkCode.js">
+<script type="text/javascript" src="../../js/checkCode.js">
 </script>
 <!-- 让背景图片覆盖整个屏幕  -->
 <style type="text/css">   
@@ -186,9 +186,9 @@ div {
 				<br> <input type="submit" value="登录" id="button1"
 					class="btn Borange mb20" disabled="true" />
 			</form>
-			<a href="resetPWD.jsp"><font color="blue" size="2px">忘记密码</font></a>
+			<a href="${pageContext.request.contextPath}/register/resetPWD"><font color="blue" size="2px">忘记密码</font></a>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a
-				href="register.jsp"><font color="blue" size="2px">注册账号</font></a>
+				href="${pageContext.request.contextPath}/register/toRegister"><font color="blue" size="2px">注册账号</font></a>
 		</div>
 	</center>
 </body>
