@@ -19,6 +19,7 @@ public class LoginInterceptor implements HandlerInterceptor{
 		HttpSession session = request.getSession();
 		String userName =String.valueOf(session.getAttribute("userName"));
 		String id = String.valueOf(session.getAttribute("userId"));
+		session.removeAttribute("error");
 		if (null == userName || "".equals(userName) || null == id || "".equals(id) || "null" == id || "null" == userName) {
 			log.info("-------------该用户没有登录!-------------");
 //			response.sendRedirect("/WEB-INF/jsp/login.jsp");

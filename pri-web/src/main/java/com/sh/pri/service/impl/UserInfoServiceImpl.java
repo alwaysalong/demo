@@ -63,6 +63,7 @@ public class UserInfoServiceImpl implements IUserInfoService {
 		} catch (Exception e) {
 			log.info("UserInfoServiceImpl.addUser   exception :" + e);
 			log.info(e.getMessage(),e);
+			//默认情况下只有service层手动抛出RuntimeException异常,数据才会进行回滚
 			throw new RuntimeException();
 		}
 	}
@@ -73,35 +74,53 @@ public class UserInfoServiceImpl implements IUserInfoService {
 			map.put("msg", "参数不能为空!");
 			return map;
 		}
-		String pwd = DigestUtils.md5Hex(passWord);
-		TUserInfo user = userInfoDao.queryUserInfo(userName, pwd);
-		if (user == null) {
-			map.put("msg", "用户名或密码不正确!");
+		try {
+			String pwd = DigestUtils.md5Hex(passWord);
+			TUserInfo user = userInfoDao.queryUserInfo(userName, pwd);
+			if (user == null) {
+				map.put("msg", "用户名或密码不正确!");
+				return map;
+			}
+			userInfoDao.deleUser(userName, pwd);
+			map.put("msg", "删除用户成功!");
+			map.put("已删除", userName);
 			return map;
+		}catch (Exception e){
+			log.info("UserInfoServiceImpl.deleUser  exception   :" + e);
+			log.info(e.getMessage(),e);
+			//默认情况下只有service层手动抛出RuntimeException异常,数据才会进行回滚
+			throw new RuntimeException();
 		}
-		userInfoDao.deleUser(userName, pwd);
-		map.put("msg", "删除用户成功!");
-		map.put("已删除", userName);
-		return map;
+
 	}
 
 	public Map<String, Object> updatePWD(String userName, String passWord,
 			String oldPWD) {
 		if (null == userName || "".equals(userName) || null == passWord
 				|| "".equals(passWord) || null == oldPWD || "".equals(oldPWD)) {
+			map.put("code", ConstantsClass.PARAMETER_ERROR);
 			map.put("msg", "参数不能为空!");
 			return map;
 		}
-		String pwd = DigestUtils.md5Hex(oldPWD);
-		TUserInfo user = userInfoDao.queryUserInfo(userName, pwd);
-		if (user == null) {
-			map.put("msg", "用户名或密码不正确!");
+		try {
+			String pwd = DigestUtils.md5Hex(oldPWD);
+			TUserInfo user = userInfoDao.queryUserInfo(userName, pwd);
+			if (user == null) {
+				map.put("code", ConstantsClass.PARAMETER_ERROR);
+				map.put("msg", "原密码不正确!");
+				return map;
+			}
+			String newPWD = DigestUtils.md5Hex(passWord);
+			userInfoDao.updatePWD(userName, newPWD);
+			map.put("code", ConstantsClass.REQUEST_SUCCESS);
+			map.put("msg", "密码修改成功!");
 			return map;
+		}catch (Exception e){
+			log.info("UserInfoServiceImpl.updatePWD   exception :" + e);
+			log.info(e.getMessage(), e);
+			throw new RuntimeException();
 		}
-		String newPWD = DigestUtils.md5Hex(passWord);
-		userInfoDao.updatePWD(userName, newPWD);
-		map.put("msg", "密码修改成功!");
-		return map;
+
 	}
 
 

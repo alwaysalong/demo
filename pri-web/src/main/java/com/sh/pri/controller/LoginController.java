@@ -37,6 +37,7 @@ public class LoginController {
 		HttpSession session = request.getSession();
 		String userName = request.getParameter("username");
 		String passWord = request.getParameter("password");
+		session.removeAttribute("error");
 		if (null == userName || "".equals(userName) || null == passWord
 				|| "".equals(passWord)) {
 			log.error("LoginController . loglinIn 的参数不能为空! ");
@@ -50,10 +51,11 @@ public class LoginController {
 			result = loginService.loginIn(userName, passWord);
 			if (result.get("code").equals(ConstantsClass.REQUEST_FAIL)) {
 				session.setAttribute("error", "用户名或密码错误!");
-				response.sendRedirect("/login.jsp");
+//				response.sendRedirect("/login.jsp");
 //				session.setMaxInactiveInterval(1);
 				return "login";
-			} else {				session.setAttribute("userId", result.get("id"));
+			} else {
+				session.setAttribute("userId", result.get("id"));
 				session.setAttribute("userName", userName);
 				session.setMaxInactiveInterval(5*60);
 				Cookie cookie = new Cookie("name", userName);
@@ -76,10 +78,25 @@ public class LoginController {
 //		return null;
 	}
 
+	/**
+	 * 退出登录
+	 * @param session
+	 * @return
+	 */
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
-		return "redirect:/login.jsp";
+		return "login";
 
+	}
+
+	/**
+	 * 跳转到登录页面
+	 * @return
+	 */
+	@RequestMapping("/toLogin")
+	public String toLogin(HttpServletRequest request){
+		request.getSession().invalidate();
+		return "login";
 	}
 }

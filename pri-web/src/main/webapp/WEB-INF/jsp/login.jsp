@@ -80,8 +80,8 @@ div {
      }      
  </style>   
 <script type="text/javascript">
-	
-	//先加载完全页面
+
+    //先加载完全页面
 	$(document).ready(function() {
 		$('#hint').hide();
 		$('#hint1').hide();
@@ -150,6 +150,7 @@ div {
 				<h3>欢迎您</h3>
 				<font color="red">${sessionScope.error }</font>
 
+				<%--<%=session.getAttribute("name") %>--%>
 			</div>
 			<form id="indexform" name="indexForm"
 				action="${pageContext.request.contextPath}/login/loginIn"
@@ -186,7 +187,7 @@ div {
 				<br> <input type="submit" value="登录" id="button1"
 					class="btn Borange mb20" disabled="true" />
 			</form>
-			<a href="${pageContext.request.contextPath}/register/resetPWD"><font color="blue" size="2px">忘记密码</font></a>
+			<a href="${pageContext.request.contextPath}/register/forgetPWD"><font color="blue" size="2px">忘记密码</font></a>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a
 				href="${pageContext.request.contextPath}/register/toRegister"><font color="blue" size="2px">注册账号</font></a>
 		</div>

@@ -1,8 +1,11 @@
 package com.sh.pri.service.impl;
 
+import java.net.InetAddress;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.sh.pri.commons.Tools;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -41,6 +44,8 @@ public class LoginServiceImpl implements ILoginService {
 				map.put("msg", "用户名或密码错误!");
 				return map;
 			}
+			Date lastLoginTime = new Date();
+			userInfoDao.addLastLoginIPAndTime(userName, Tools.ts(InetAddress.getLocalHost().getHostAddress()), lastLoginTime);
 			result.setPassWord(null);
 			map.put("code", ConstantsClass.REQUEST_SUCCESS);
 			map.put("msg", "查询成功!");

@@ -35,10 +35,10 @@
 		#{userName} and password = #{passWord}
 	</update>
 	<!-- 修改密码 -->
-	<!-- <update id="updatePWD">
+	<update id="updatePWD">
 		update t_user_info set password = #{passWord} where
 		username = #{userName}
-	</update> -->
+	</update>
 
 	<select id="queryUserByName" resultType="TUserInfo" resultMap="userInfoMap">
 
@@ -60,7 +60,12 @@
 		VALUES
 		(#{userName},#{passWord},#{email},#{mobile},#{regTime},#{regIp},#{sex},0)
 	</insert>
-	
+
+	<!--添加最后登录ip-->
+	<update id="addLastLoginIPAndTime" >
+		UPDATE t_user_info SET last_login_ip = #{lastLoginIpd}, last_login_time = #{lastLoginTime} WHERE username = #{userName};
+	</update>
+
 	<!-- 查所有用户 -->
 	<select id="selectUserAll" resultMap="userInfoMap">
 		SELECT * FROM t_user_info

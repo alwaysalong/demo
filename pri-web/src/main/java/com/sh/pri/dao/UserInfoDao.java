@@ -1,12 +1,12 @@
 package com.sh.pri.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
 import com.sh.pri.pojo.TUserInfo;
 import com.sh.pri.pojo.UserInfo;
-
 public interface UserInfoDao {
 
 	/**
@@ -19,8 +19,12 @@ public interface UserInfoDao {
 	 * 新增用户
 	 */
 	public Long addUser(@Param("userName") String userName, @Param("passWord") String passWord, @Param("sex") String sex);
-	
-	
+
+	/**
+	 * 添加最后登录ip地址
+	 */
+	public void addLastLoginIPAndTime(@Param("userName") String userName, @Param("lastLoginIpd") String lastLoginIp, @Param("lastLoginTime") Date lastLoginTime);
+
 	/**
 	 * 删除用户,逻辑删除
 	 * 
@@ -30,7 +34,7 @@ public interface UserInfoDao {
 	/**
 	 * 修改密码
 	 */
-	public int updatePWD(@Param("userName") String userName, @Param("passWord") String passWord);
+	public void updatePWD(@Param("userName") String userName, @Param("passWord") String passWord);
 	
 	
 	/*

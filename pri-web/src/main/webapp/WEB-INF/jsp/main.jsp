@@ -209,8 +209,10 @@
 <script src="http://s94.cnzz.com/stat.php?id=4106941&web_id=4106941" language="JavaScript"></script>
 </span><body class="easyui-layout">
 <div region="north" border="true" class="cs-north" >
-    <div class="cs-north-bg"><div><font size="5" color="blue">Private management space</font><p align="right" style="font-size:16px;">欢迎您: <font color="blue">${sessionScope.userName}</font>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/login/logout"><font color="red">[退出]</font></a></p></div></div>
+    <%--<div class="cs-north-bg"><div><font size="5" color="blue">Private management space</font><p align="right" style="font-size:16px;">欢迎您: <font color="blue">${sessionScope.userName}</font>&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/login/logout"><font color="red">[退出]</font></a></p></div></div>--%>
+        <div class="cs-north-bg"><div><font size="5" color="blue">Private management space</font><p align="right" style="font-size:16px;"><font size="0.5">欢迎您: </font><a href="javascript:void(0)" id="mb" class="easyui-menubutton" data-options="menu:'#mmmm',iconCls:'icon-edit'"><font color="blue" size="3">${sessionScope.userName}</font></a></p></div></div>
     <%--<div class="cs-north-bg"><div class="cs-north-logo">Private management space</div></div>--%>
+    <%--<a href="javascript:void(0)" id="mb" class="easyui-menubutton" data-options="menu:'#mm',iconCls:'icon-edit'">Edit</a>--%>
 </div>
 <div region="west" border="true" split="true" title="Navigation" class="cs-west">
     <div class="easyui-accordion" fit="true" border="false">
@@ -291,6 +293,18 @@
     <div id="mm-tabclose">关闭</div>
     <div id="mm-tabcloseother">关闭其他</div>
     <div id="mm-tabcloseall">关闭全部</div>
+</div>
+
+<div id="mmmm" class="easyui-menu cs-tab-menu" >
+    <div data-options="iconCls:'icon-undo'">Undo</div>
+    <div data-options="iconCls:'icon-redo'">Redo</div>
+    <div class="menu-sep"></div>
+    <div>Cut</div>
+    <div><a href="${pageContext.request.contextPath}/register/resetPWD"><font>修改密码</font></a></div>
+    <div><a href="${pageContext.request.contextPath}/login/logout"><font>退出登录</font></a></div>
+    <%--<div class="menu-sep"></div>--%>
+    <%--<div data-options="iconCls:'icon-remove'">Delete</div>--%>
+    <%--<div>Select All</div>--%>
 </div>
 </body>
 </html>

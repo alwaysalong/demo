@@ -8,15 +8,15 @@ $(function() {
 	jQuery.validator.addMethod("ok", function(value, element) {
 	//	var userName = /^[a-zA-Z][\w]{4,16}$/;
 		var userName = /^.{3,20}$/;
-		returnthis.optional(element) || (userName.test(value));
+		return this.optional(element) || (userName.test(value));
 }, '长度为3-20的所有字符');
 	jQuery.validator.addMethod("ok1", function(value, element) {
 		var mobile = /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/;
-		returnthis.optional(element) || (mobile.test(value));
+		return this.optional(element) || (mobile.test(value));
 	}, '正确的手机号码');
 	jQuery.validator.addMethod("ok2", function(value, element) {
 		var passWord = /^[a-zA-Z][\w]{4,16}$/;
-		returnthis.optional(element) || (passWord.test(value));
+		return this.optional(element) || (passWord.test(value));
 	}, '以字母开头，5-17 位字母、数字、下划线"_"');
 $('#regForm').validate({
 	debug : false, //false表示验证通过后不要自动提交表单
