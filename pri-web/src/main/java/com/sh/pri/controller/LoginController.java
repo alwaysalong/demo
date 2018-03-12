@@ -34,6 +34,7 @@ public class LoginController {
 	public String loglinIn(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		Map<String, Object> result = new HashMap<String, Object>();
+//		quest.setAttribute("error", "错误信息！");
 		HttpSession session = request.getSession();
 		String userName = request.getParameter("username");
 		String passWord = request.getParameter("password");
