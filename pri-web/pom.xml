@@ -104,6 +104,12 @@
 		</dependency>
 		<!-- log end -->
 
+		<!--参数验证-->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+		</dependency>
+
 		<!-- 映入JSON -->
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>

@@ -10,7 +10,7 @@
 	</context-param>
 	<!-- 指示服务器在收到引用一个目录名而不是文件名的URL时，使用哪个文件。 -->
 	<welcome-file-list>
-		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>login.jsp</welcome-file>
 	</welcome-file-list>
 
 	<!-- 字符集过滤器 -->

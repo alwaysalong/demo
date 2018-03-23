@@ -54,6 +54,9 @@
 			<!--不拦截这些请求-->
 			<mvc:exclude-mapping path="/login/*" />
 			<mvc:exclude-mapping path="/register/*" />
+			<mvc:exclude-mapping path="/css/*" />
+			<mvc:exclude-mapping path="/image/*" />
+			<mvc:exclude-mapping path="/js/*" />
 			<bean class="com.sh.pri.interceptor.LoginInterceptor"></bean>
 		</mvc:interceptor>
 	
