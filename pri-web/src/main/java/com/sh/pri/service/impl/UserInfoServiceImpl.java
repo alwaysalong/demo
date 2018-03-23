@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.sh.pri.commons.ConstantsClass;
-import com.sh.pri.dao.UserInfoDao;
+import com.sh.pri.dao.IUserInfoDao;
 import com.sh.pri.pojo.TUserInfo;
 import com.sh.pri.service.IUserInfoService;
 
@@ -24,7 +24,7 @@ public class UserInfoServiceImpl implements IUserInfoService {
 
 	private static Log log = LogFactory.getLog(UserInfoServiceImpl.class);
 	@Autowired
-	private UserInfoDao userInfoDao;
+	private IUserInfoDao userInfoDao;
 	private Map<String, Object> map = new HashMap<String, Object>();
 
 	public Map<String, Object> queryUserInfo(String userName, String passWord) {
@@ -34,7 +34,7 @@ public class UserInfoServiceImpl implements IUserInfoService {
 			return map;
 		}
 		String pwd = DigestUtils.md5Hex(passWord);
-		TUserInfo result = userInfoDao.queryUserInfo(userName, pwd);
+		TUserInfo result = userInfoDao.queryUserInfo1(userName, pwd);
 		result.setPassWord(null);
 		map.put("msg", "查询成功!");
 		map.put("id", result.getId());
@@ -76,7 +76,7 @@ public class UserInfoServiceImpl implements IUserInfoService {
 		}
 		try {
 			String pwd = DigestUtils.md5Hex(passWord);
-			TUserInfo user = userInfoDao.queryUserInfo(userName, pwd);
+			TUserInfo user = userInfoDao.queryUserInfo1(userName, pwd);
 			if (user == null) {
 				map.put("msg", "用户名或密码不正确!");
 				return map;
@@ -104,7 +104,7 @@ public class UserInfoServiceImpl implements IUserInfoService {
 		}
 		try {
 			String pwd = DigestUtils.md5Hex(oldPWD);
-			TUserInfo user = userInfoDao.queryUserInfo(userName, pwd);
+			TUserInfo user = userInfoDao.queryUserInfo1(userName, pwd);
 			if (user == null) {
 				map.put("code", ConstantsClass.PARAMETER_ERROR);
 				map.put("msg", "原密码不正确!");

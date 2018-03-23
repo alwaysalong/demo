@@ -220,7 +220,7 @@
             <p><a href="javascript:void(0);" src="${pageContext.request.contextPath}/poiExcel/jump" class="cs-navi-tab">信息上传下载</a></p>
             <p><a href="javascript:void(0);" src="${pageContext.request.contextPath}/test/getTr" class="cs-navi-tab">获取td元素</a></p>
             <p><a href="javascript:void(0);" src="${pageContext.request.contextPath}/pageHelper/userList" class="cs-navi-tab">会员信息</a></p>
-            <p><a href="javascript:void(0);" src="demo/droppable1.html" class="cs-navi-tab">droppable1</a></p>
+            <p><a href="javascript:void(0);" src="${pageContext.request.contextPath}/queryInfo/toQueryJsp" class="cs-navi-tab">查询用户信息</a></p>
             <p><a href="javascript:void(0);" src="demo/droppable2.html" class="cs-navi-tab">droppable2</a></p>
             <p><a href="javascript:void(0);" src="demo/resizable.html" class="cs-navi-tab">resizable</a></p>
             <p><a href="javascript:void(0);" src="demo/pagination.html" class="cs-navi-tab">pagination</a></p>

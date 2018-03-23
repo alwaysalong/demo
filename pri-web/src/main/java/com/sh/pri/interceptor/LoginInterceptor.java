@@ -29,7 +29,7 @@ public class LoginInterceptor implements HandlerInterceptor{
 					.forward(request, response);
 			return false;
 		}
-		session.setMaxInactiveInterval(5*60);
+//		session.setMaxInactiveInterval(5*60);
 		return true;
 //		String userName = CookieUtils.getCookieValueByName(request, "name");
 //		if (null == userName || "".equals(userName)){

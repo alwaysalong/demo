@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sh.pri.commons.ConstantsClass;
-import com.sh.pri.dao.UserInfoDao;
+import com.sh.pri.dao.IUserInfoDao;
 import com.sh.pri.pojo.TUserInfo;
 import com.sh.pri.service.ILoginService;
 
@@ -23,7 +23,7 @@ public class LoginServiceImpl implements ILoginService {
 	private static Log log = LogFactory.getLog(LoginServiceImpl.class);
 
 	@Autowired
-	private UserInfoDao userInfoDao;
+	private IUserInfoDao userInfoDao;
 	
 	private Map<String, Object> map = new HashMap<String, Object>();
 	
@@ -38,7 +38,7 @@ public class LoginServiceImpl implements ILoginService {
 		}*/
 		try {
 			String pwd = DigestUtils.md5Hex(passWord);
-			TUserInfo result = userInfoDao.queryUserInfo(userName, pwd);
+			TUserInfo result = userInfoDao.queryUserInfo1(userName, pwd);
 			if (null == result || "".equals(result)) {
 				map.put("code", ConstantsClass.REQUEST_FAIL);
 				map.put("msg", "用户名或密码错误!");
