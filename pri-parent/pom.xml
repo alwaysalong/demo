@@ -17,8 +17,8 @@
 	<!-- 配置聚合（便于统一打包） -->
 	<modules>
 		<!-- 指定各个自工程 -->
-		<module>pri-base</module>
-		<module>pri-web</module>
+		<!--<module>pri-base</module>-->
+		<!--<module>pri-web</module>-->
 	</modules>
 
 	<!-- 配置依赖的管理（即继承） -->
