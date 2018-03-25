@@ -3,10 +3,10 @@ package com.sh.pri.dao;
 import java.util.Date;
 import java.util.List;
 
+import com.sh.pri.dto.UserInfoDto;
 import org.apache.ibatis.annotations.Param;
 
 import com.sh.pri.pojo.TUserInfo;
-import com.sh.pri.pojo.UserInfo;
 public interface IUserInfoDao {
 
 	/**
@@ -61,4 +61,11 @@ public interface IUserInfoDao {
 	 */
 	public List<TUserInfo> selectUserAll();
 
+
+	/**
+	 * 查询用户信息
+	 * @param userName
+	 * @return
+	 */
+	UserInfoDto queryUserInfo(@Param("userName") String userName);
 }

@@ -1,6 +1,7 @@
 package com.sh.pri.dto;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by admin on 2018/3/23.
@@ -9,27 +10,37 @@ public class UserInfoDto implements Serializable {
 
     private static final long serialVersionUID = -651147447676290693L;
 
-    private String userNmae;
-    private String moblie;
+    private int id;
+    private String userName;
+    private String mobile;
     private String email;
-    private String sex;
+    private int sex;
     private String lastLoginIp;
-    private String lastLoginTime;
+    private Date lastLoginTime;
 
-    public String getUserNmae() {
-        return userNmae;
+
+    public int getId() {
+        return id;
     }
 
-    public void setUserNmae(String userNmae) {
-        this.userNmae = userNmae;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getMoblie() {
-        return moblie;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setMoblie(String moblie) {
-        this.moblie = moblie;
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
     public String getEmail() {
@@ -40,11 +51,11 @@ public class UserInfoDto implements Serializable {
         this.email = email;
     }
 
-    public String getSex() {
+    public int getSex() {
         return sex;
     }
 
-    public void setSex(String sex) {
+    public void setSex(int sex) {
         this.sex = sex;
     }
 
@@ -56,11 +67,11 @@ public class UserInfoDto implements Serializable {
         this.lastLoginIp = lastLoginIp;
     }
 
-    public String getLastLoginTime() {
+    public Date getLastLoginTime() {
         return lastLoginTime;
     }
 
-    public void setLastLoginTime(String lastLoginTime) {
+    public void setLastLoginTime(Date lastLoginTime) {
         this.lastLoginTime = lastLoginTime;
     }
 }

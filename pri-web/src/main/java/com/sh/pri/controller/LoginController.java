@@ -58,7 +58,7 @@ public class LoginController {
 			} else {
 				session.setAttribute("userId", result.get("id"));
 				session.setAttribute("userName", userName);
-				session.setMaxInactiveInterval(5*60);
+//				session.setMaxInactiveInterval(5*60);
 				Cookie cookie = new Cookie("name", userName);
 				cookie.setPath("/");
 				//过期时间60s

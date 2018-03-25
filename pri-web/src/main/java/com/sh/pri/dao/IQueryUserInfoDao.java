@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 /**
  * Created by admin on 2018/3/23.
  */
-@Repository
 public interface IQueryUserInfoDao {
 
     /**
