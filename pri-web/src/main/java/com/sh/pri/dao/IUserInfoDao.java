@@ -1,12 +1,11 @@
 package com.sh.pri.dao;
 
-import java.util.Date;
-import java.util.List;
-
+import com.sh.pri.pojo.TUserInfo;
 import com.sh.pri.dto.UserInfoDto;
 import org.apache.ibatis.annotations.Param;
 
-import com.sh.pri.pojo.TUserInfo;
+import java.util.Date;
+import java.util.List;
 public interface IUserInfoDao {
 
 	/**
@@ -67,5 +66,5 @@ public interface IUserInfoDao {
 	 * @param userName
 	 * @return
 	 */
-	UserInfoDto queryUserInfo(@Param("userName") String userName);
+	List<UserInfoDto> queryUserInfo(@Param("userName") String userName);
 }

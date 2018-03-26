@@ -45,22 +45,22 @@
     </bean>
 	
 
-	<mvc:interceptors>
-		<mvc:interceptor>
-			<!-- 拦截所有url中包括/user/的请求 -->
-			<!--<mvc:mapping path="/user/**" />-->
-			<!--拦截所有请求-->
-			<mvc:mapping path="/**" />
-			<!--不拦截这些请求-->
-			<mvc:exclude-mapping path="/login/*" />
-			<mvc:exclude-mapping path="/register/*" />
-			<mvc:exclude-mapping path="/css/*" />
-			<mvc:exclude-mapping path="/image/*" />
-			<mvc:exclude-mapping path="/js/*" />
-			<bean class="com.sh.pri.interceptor.LoginInterceptor"></bean>
-		</mvc:interceptor>
-	
-	</mvc:interceptors>
+	<!--<mvc:interceptors>-->
+		<!--<mvc:interceptor>-->
+			<!--&lt;!&ndash; 拦截所有url中包括/user/的请求 &ndash;&gt;-->
+			<!--&lt;!&ndash;<mvc:mapping path="/user/**" />&ndash;&gt;-->
+			<!--&lt;!&ndash;拦截所有请求&ndash;&gt;-->
+			<!--<mvc:mapping path="/**" />-->
+			<!--&lt;!&ndash;不拦截这些请求&ndash;&gt;-->
+			<!--<mvc:exclude-mapping path="/login/*" />-->
+			<!--<mvc:exclude-mapping path="/register/*" />-->
+			<!--<mvc:exclude-mapping path="/css/*" />-->
+			<!--<mvc:exclude-mapping path="/image/*" />-->
+			<!--<mvc:exclude-mapping path="/js/*" />-->
+			<!--<bean class="com.sh.pri.interceptor.LoginInterceptor"></bean>-->
+		<!--</mvc:interceptor>-->
+	<!---->
+	<!--</mvc:interceptors>-->
 	
 <!-- 上传文件拦截，设置最大上传文件大小   10M=10*1024*1024(B)=10485760 bytes -->  
 <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

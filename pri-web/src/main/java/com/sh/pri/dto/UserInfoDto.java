@@ -10,7 +10,7 @@ public class UserInfoDto implements Serializable {
 
     private static final long serialVersionUID = -651147447676290693L;
 
-    private int id;
+    private Long id;
     private String userName;
     private String mobile;
     private String email;
@@ -19,11 +19,11 @@ public class UserInfoDto implements Serializable {
     private Date lastLoginTime;
 
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

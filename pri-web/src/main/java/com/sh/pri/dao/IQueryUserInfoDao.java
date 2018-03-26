@@ -2,7 +2,6 @@ package com.sh.pri.dao;
 
 import com.sh.pri.dto.UserInfoDto;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
 /**
  * Created by admin on 2018/3/23.

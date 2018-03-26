@@ -9,8 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  *
@@ -38,14 +40,21 @@ public class QueryUserInfoController {
      * @return
      */
     @RequestMapping(value = "/user", method = RequestMethod.POST)
-    public UserInfoDto queryUserInfo(@RequestBody String userName){
+    @ResponseBody
+    public List<UserInfoDto> queryUserInfo(HttpServletRequest request, String userName){
         logger.info("QueryUserInfoController.queryUserInfo ... start...userName :" + userName);
         long start = System.currentTimeMillis();
-        UserInfoDto userInfoDto = null;
+//        String username = request.getParameter("username");
+        List<UserInfoDto> userInfoDto = null;
         if (StringUtils.isBlank(userName)){
             return userInfoDto;
         }
-        userInfoDto = queryUserInfoService.queryUserInfo(userName);
+        try {
+            userInfoDto = queryUserInfoService.queryUserInfo(userName);
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.info("查询用户信息异常.." + e.getMessage(), e);
+        }
         logger.info("QueryUserInfoController.queryUserInfo ... end  cost :" + (System.currentTimeMillis() - start) + "ms");
         return userInfoDto;
     }

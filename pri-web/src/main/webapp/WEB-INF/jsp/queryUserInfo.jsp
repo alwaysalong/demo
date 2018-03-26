@@ -33,7 +33,7 @@
                     </ul>
                 </div>
             <div>
-                <table  border="px1"  width="400">
+                <table  border="px1"  width="400" id="tb">
                     <thead>
                     <tr>
                         <td>用户名</td>
@@ -45,14 +45,15 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${userInfoDto}" var="userInfo" varStatus="status">
-                        <tr>
-                            <td>${userInfo.userNmae}</td>
-                            <td>${userInfo.moblie}</td>
-                            <td>${userInfo.email}</td>
-                            <td>${userInfo.sex}</td>
-                            <td>${userInfo.lastLoginIp}</td>
-                            <td>${userInfo.lastLoginTime}</td>
+                    <%--<c:forEach items="${userInfoDto}" var="userInfo" varStatus="status">--%>
+                        <%--<tr>--%>
+                            <%--<td>${userInfo.userNmae}</td>--%>
+                            <%--<td>${userInfo.moblie}</td>--%>
+                            <%--<td>${userInfo.email}</td>--%>
+                            <%--<td>${userInfo.sex}</td>--%>
+                            <%--<td>${userInfo.lastLoginIp}</td>--%>
+                            <%--<td>${userInfo.lastLoginTime}</td>--%>
+
                             <%--<td>--%>
                                 <%--<c:if test="${item.flag eq '0'}">--%>
                                     <%--已实名制--%>
@@ -66,8 +67,9 @@
                                     <%--<input type="button" onclick="certificationCancel('${item.usrOnlyid}')" value="注    销"></input>--%>
                                 <%--</c:if>--%>
                             <%--</td>--%>
-                        </tr>
-                    </c:forEach>
+
+                        <%--</tr>--%>
+                    <%--</c:forEach>--%>
                     </tbody>
                 </table>
             </div>
@@ -83,17 +85,20 @@
             alert("用户名不能为空!");
             return false;
         }
-        alert(userName);
         $.ajax({
             url : "${pageContext.request.contextPath}/queryInfo/user",
             type : "POST",
-            data : {username:userName},
+            data : {userName:userName} ,
             dataType : "json",
-            success : function (data) {
-                alert(data);
+            success : function (userInfoDto) {
+                alert("-----");
+                $('#tb tr:gt(0)').remove();//删除之前的数据
+                var s = '';
+                for (var i = 0; i < userInfoDto.length; i++) s += '<tr><td>' + userInfoDto[i].userName + '</td><td>' + userInfoDto[i].mobile + '</td><td>' + userInfoDto[i].email + '</td>'
+                    + '<td>' + userInfoDto[i].sex + '</td><td>' + userInfoDto[i].lastLoginIp + '</td><td>' + userInfoDto[i].lastLoginTime + '</td></tr>';
+                $('#tb').append(s);
             },
             error : function () {
-                alert("${pageContext.request.contextPath}/queryInfo/user");
                 alert("系统异常,请稍后再试!");
             }
         })
