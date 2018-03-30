@@ -1,4 +1,4 @@
-package com.sh.pri.app;
+package com.sh.pri;
 
 
 import org.springframework.boot.SpringApplication;

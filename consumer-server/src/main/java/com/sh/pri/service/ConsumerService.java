@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.List;
+
 /**
  * rest方式调用
  * Created by Administrator on 2018/3/28.
@@ -14,8 +16,8 @@ public class ConsumerService {
     @Autowired
     private RestTemplate restTemplate;
 
-    public String getProvinde(){
-        String object = restTemplate.getForObject("http://province-server/provinceServer", String.class);
+    public List<String> getProvinde(){
+        List<String> object = restTemplate.getForObject("http://province-server/province/provinceServer", List.class);
         return object;
     }
 }
