@@ -176,7 +176,7 @@ public class JsonUtil {
 //                ip = request.getHeader("WL-Proxy-Client-IP");
 //            }
 //            if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-//                ip = com.ule.web.util.Tools.getIpAddr(request);
+//                ip = com.web.util.Tools.getIpAddr(request);
 //            }
 //            return ip;
 //        } catch (Exception e) {
