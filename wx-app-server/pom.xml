@@ -25,6 +25,11 @@
     </properties>
 
     <dependencies>
+        <!--加上这个以来才能访问templates下的静态页面-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
         <!-- 开发web项目相关依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -35,6 +40,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <!--热部署依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
         </dependency>
     </dependencies>
     <!--maven构建-->
